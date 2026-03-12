@@ -37,14 +37,6 @@
             background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4)) !important;
         }
 
-        [data-theme="light"] .hero-content h1 {
-            color: #000 !important;
-        }
-
-        [data-theme="light"] .hero-content p {
-            color: #1a1a1a !important;
-        }
-
         /* Category Filter Tabs */
         .category-tabs {
             display: flex;
@@ -147,8 +139,9 @@
         .region-card h3 {
             font-family: var(--font-heading);
             font-size: 24px;
-            color: var(--color-text);
+            color: #fff;
             z-index: 2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         /* Testimonials */
@@ -168,22 +161,20 @@
            RTL MODE — Stories Page
            ===================== */
 
-        /* Featured Story — flip image vs text columns */
+        /* Featured Story */
         body.rtl-mode #featured .dest-container>div {
             direction: rtl;
         }
 
         body.rtl-mode #featured .dest-container>div>div:last-child {
-            text-align: right;
-        }
-
-        /* Behind the Lens — flip image vs text columns */
-        body.rtl-mode #featured~section .dest-container>div[style*="grid"] {
             direction: rtl;
+            text-align: right;
         }
 
-        body.rtl-mode #featured~section .dest-container>div[style*="grid"]>div:last-child {
+        /* Stories Grid */
+        body.rtl-mode .story-card {
             text-align: right;
+            direction: rtl;
         }
 
         /* Reader Reflections — right-align card text */
@@ -192,34 +183,22 @@
             direction: rtl;
         }
 
-        /* Author byline in featured story */
-        body.rtl-mode #featured [style*="display: flex; align-items: center"] {
-            flex-direction: row-reverse;
+        /* Region Cards */
+        body.rtl-mode .region-card {
+            direction: rtl;
         }
 
         /* Keep section headings centered */
         body.rtl-mode [style*="text-align: center"],
         body.rtl-mode .section-header.centered {
-            direction: ltr;
+            direction: rtl;
             text-align: center !important;
         }
 
-        /* Mobile: reset RTL */
+        /* Mobile: Retain stack formatting */
         @media (max-width: 768px) {
-
-            body.rtl-mode #featured .dest-container>div,
-            body.rtl-mode #featured~section .dest-container>div[style*="grid"] {
-                direction: ltr;
-            }
-
-            body.rtl-mode #featured .dest-container>div>div:last-child,
-            body.rtl-mode #featured~section .dest-container>div[style*="grid"]>div:last-child {
-                text-align: left;
-            }
-
-            body.rtl-mode .ref-card {
-                text-align: left;
-                direction: ltr;
+            body.rtl-mode #featured .dest-container>div {
+                flex-direction: column;
             }
         }
     </style>
@@ -283,7 +262,7 @@
                         </svg>
                     </button>
                     <button class="rtl-toggle" id="rtl-toggle">LTR</button>
-                    <a href="login.html" class="login-link">Login</a>
+                    <a href="login.html" class="premium-cta header-cta">Become an Explorer</a>
                     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                         <span></span>
                         <span></span>
@@ -321,36 +300,28 @@
             <a href="stories.html" class="active">Stories</a>
             <a href="about.html">About</a>
             <a href="collaborate.html">Collaborate</a>
-            <a href="login.html">Login</a>
         </div>
-        <div class="mobile-actions" style="margin-top: auto;">
-            <button class="rtl-toggle" id="rtl-toggle-mobile" style="margin-bottom: var(--space-4);">LTR</button>
-            <a href="destinations.html" class="btn-primary" style="display: block; text-align: center;">Start
-                Exploring</a>
+        <div class="mobile-cta">
+            <a href="login.html" class="btn-primary full-width">
+                Become an Explorer
+            </a>
         </div>
     </div>
 
     <main>
         <!-- SECTION 1 — HERO -->
-        <section class="hero-banner"
+        <section class="hero-banner stories-hero"
             style="position: relative; min-height: calc(65vh + var(--navbar-height)); display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: #000; padding-top: var(--navbar-height);">
-            <div class="hero-content"
-                style="position: relative; z-index: 3; max-width: 850px; padding: 0 var(--space-4);">
+            <div class="hero-content">
                 <span class="hero-label" style="margin-bottom: var(--space-3);">Field Narratives</span>
-                <h1
-                    style="font-size: clamp(42px, 7vw, 64px); margin-bottom: var(--space-4); line-height: 1.1; font-family: var(--font-heading); color: #FFF;">
-                    Stories from the Edge of the World</h1>
-                <p
-                    style="font-size: 18px; color: rgba(255,255,255,0.9); max-width: 650px; margin: 0 auto; line-height: 1.7; margin-bottom: var(--space-8);">
-                    Exploring culture, landscape, and humanity through immersive documentary storytelling.</p>
-                <a href="#grid" class="btn-primary" style="padding: 18px 45px;">Begin The Journey</a>
+                <h1>Stories from the Edge of the World</h1>
+                <p>Exploring culture, landscape, and humanity through immersive documentary storytelling.</p>
+                <a href="#grid" class="btn-primary hero-cta" style="padding: 18px 45px;">Begin The Journey</a>
             </div>
-            <div class="hero-overlay"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)); z-index: 2;">
+            <div class="hero-bg" style="position: absolute; inset: 0; z-index: 1;">
+                <img src="../assets/images/story-img/HeroSection-img.jpg" alt="Storytelling"
+                    style="width: 100%; height: 100%; object-fit: cover;">
             </div>
-            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=1920"
-                alt="Storytelling" class="hero-bg"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
         </section>
 
         <!-- SECTION 2 — FEATURED STORY -->
@@ -400,11 +371,14 @@
         <!-- SECTION 4 — STORIES GRID -->
         <section id="grid" style="padding: 80px 0;">
             <div class="dest-container">
+                <div class="section-header centered" style="margin-bottom: var(--space-10);">
+                    <h2 style="font-family: var(--font-heading); font-size: 36px;">Latest Stories</h2>
+                </div>
                 <div class="story-grid grid-three-col">
                     <!-- Story 1 -->
                     <div class="story-card">
                         <div class="story-card-img">
-                            <img src="../assets/images/Adventures/vik,iceland.jpg" alt="Northern Lights"
+                            <img src="../assets/images/story-img/Northern Lights.jpg" alt="Northern Lights"
                                 style="object-position: center;">
                         </div>
                         <span
@@ -427,7 +401,7 @@
                     <!-- Story 2 -->
                     <div class="story-card">
                         <div class="story-card-img">
-                            <img src="../assets/images/destination/Autumn in Kyoto.jpg" alt="Kyoto Zen"
+                            <img src="../assets/images/story-img/Kyoto Zen.jpg" alt="Kyoto Zen"
                                 style="object-position: center;">
                         </div>
                         <span
@@ -450,7 +424,7 @@
                     <!-- Story 3 -->
                     <div class="story-card">
                         <div class="story-card-img">
-                            <img src="../assets/images/Adventures/sahara.jpg" alt="Sahara Dust"
+                            <img src="../assets/images/story-img/Sahara Dust.jpg" alt="Sahara Dust"
                                 style="object-position: center;">
                         </div>
                         <span
@@ -497,13 +471,13 @@
         <!-- SECTION 6 — BEHIND THE STORY -->
         <section style="padding: 80px 0; border-top: 1px solid var(--color-border);">
             <div class="dest-container">
-                <div class="grid-two-col" style="gap: var(--space-12); align-items: center;">
-                    <div style="text-align: center;">
-                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=600"
-                            alt="Julian Thorne"
-                            style="width: 210px; height: 300px; object-fit: cover; border-radius: var(--border-radius); box-shadow: 0 20px 40px rgba(0,0,0,0.1); object-position: center;">
+                <div
+                    style="display: flex; flex-wrap: wrap; gap: var(--space-8); align-items: center; justify-content: center; max-width: 900px; margin: 0 auto;">
+                    <div style="flex: 0 0 auto;">
+                        <img src="../assets/images/story-img/Julian Thorne.jpg" alt="Julian Thorne"
+                            style="width: 250px; height: 350px; object-fit: cover; border-radius: var(--border-radius); box-shadow: 0 20px 40px rgba(0,0,0,0.1); object-position: center;">
                     </div>
-                    <div>
+                    <div style="flex: 1; min-width: 300px;">
                         <h2 style="font-family: var(--font-heading); font-size: 32px; margin-bottom: var(--space-4);">
                             Behind the Lens</h2>
                         <p
@@ -637,19 +611,19 @@
                 </div>
                 <div class="grid-four-col" style="margin-top: var(--space-8);">
                     <a href="#grid" class="region-card"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/destination/Autumn in Kyoto.jpg'); background-size: cover; background-position: center;">
+                        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/story-img/Asia.jpg'); background-size: cover; background-position: center;">
                         <h3>Asia</h3>
                     </a>
                     <a href="#grid" class="region-card"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/Adventures/sahara.jpg'); background-size: cover; background-position: center;">
+                        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/story-img/Africa.jpg'); background-size: cover; background-position: center;">
                         <h3>Africa</h3>
                     </a>
                     <a href="#grid" class="region-card"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/Adventures/vik,iceland.jpg'); background-size: cover; background-position: center;">
+                        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/story-img/Europe.jpg'); background-size: cover; background-position: center;">
                         <h3>Europe</h3>
                     </a>
                     <a href="#grid" class="region-card"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/Adventures/patagonia.jpg'); background-size: cover; background-position: center;">
+                        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/story-img/Amaricas.jpg'); background-size: cover; background-position: center;">
                         <h3>Americas</h3>
                     </a>
                 </div>
@@ -683,8 +657,8 @@
                     <img src="../assets/icons/logo.svg" alt="TerraVoyage Logo">
                     TerraVoyage
                 </a>
-                <p>TerraVoyage is a documentary-driven travel platform dedicated to exploring remote cultures, untold
-                    histories, and human stories shaped by landscape.</p>
+                <p>TerraVoyage captures cinematic journeys across mountains, oceans, cultures, and hidden paths —
+                    telling powerful human stories shaped by landscape, adventure, and discovery.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -751,7 +725,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <div class="bottom-left">
-                    <span>&copy; 2024 TerraVoyage. All rights reserved.</span>
+                    <span>&copy; <span id="year"></span> TerraVoyage. All rights reserved.</span>
                 </div>
                 <div class="bottom-center">
                     <a href="#">Privacy Policy</a>
@@ -760,14 +734,12 @@
                     <span class="separator">|</span>
                     <a href="#">Cookie Policy</a>
                 </div>
-                <div class="bottom-right">
-                    <span>Designed for Cinematic Excellence.</span>
-                </div>
             </div>
         </div>
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.toggle('active');
         mobileNav.classList.toggle('active');
         navOverlay.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
 
         // Prevent background scrolling when menu is open
         document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';

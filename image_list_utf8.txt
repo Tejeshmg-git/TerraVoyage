@@ -1,0 +1,100 @@
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/404.html ---
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/home-v2.html ---
+assets/icons/logo.svg
+assets/images/home_v2-img/hero-img.jpg
+assets/images/home_v2-img/sahara.jpg
+assets/images/home_v2-img/FrozenMeridian.jpg
+assets/images/home_v2-img/Rain-forest.jpg
+assets/images/home_v2-img/above-the-clouds.jpg
+assets/images/home_v2-img/Mongolian nomad on horseback across the steppe.jpg
+assets/images/home_v2-img/Northern lights over a fjord in Norway.jpg
+assets/images/home_v2-img/Quechua woman weaving colorful textiles in Peru.jpg
+assets/images/home_v2-img/Bamboo forest path in Kyoto Japan.jpg
+assets/images/home_v2-img/Blue streets of Chefchaouen Morocco.jpg
+assets/images/home_v2-img/Sunset behind mountain silhouettes.jpg
+assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/index.html ---
+assets/icons/logo.svg
+https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=1920
+assets/images/Home-imgs/Nomads of Ladakh.jpg
+assets/images/Adventures/patagonia.jpg
+assets/images/Adventures/ladakh.jpg
+assets/images/Adventures/vik,iceland.jpg
+https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=300
+https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300
+https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300
+assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/about.html ---
+../assets/icons/logo.svg
+https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1920
+../assets/images/story-img/high plateau nomads.jpg
+https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=300
+https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300
+https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/adventures.html ---
+../assets/icons/logo.svg
+https://images.unsplash.com/photo-1533240332313-0db49b459ad6?auto=format&fit=crop&q=80&w=1920
+../assets/images/collaborate/himalayas.jpg
+../assets/images/Adventures/sahara.jpg
+../assets/images/Adventures/vik,iceland.jpg
+../assets/images/story-img/high plateau nomads.jpg
+../assets/images/collaborate/himalayan landscape.jpg
+https://randomuser.me/api/portraits/men/32.jpg
+https://randomuser.me/api/portraits/women/44.jpg
+https://randomuser.me/api/portraits/men/67.jpg
+../assets/images/Home-imgs/Nomads of Ladakh.jpg
+../assets/images/Adventures/patagonia.jpg
+../assets/images/collaborate/himalayas.jpg
+../assets/images/Adventures/sahara.jpg
+../assets/images/Adventures/vik,iceland.jpg
+../assets/images/Adventures/Iquitos, Peru.jpg
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/case-study.html ---
+../assets/icons/logo.svg
+../assets/images/collaborate/himalayan landscape.jpg
+../assets/images/collaborate/himalayan landscape.jpg
+https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200
+../assets/images/story-img/high plateau nomads.jpg
+../assets/images/Adventures/ladakh.jpg
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/collaborate.html ---
+../assets/icons/logo.svg
+https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=1920
+../assets/images/collaborate/himalayas.jpg
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/destinations.html ---
+../assets/icons/logo.svg
+https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1920
+../assets/images/Adventures/patagonia.jpg
+../assets/images/Adventures/ladakh.jpg
+../assets/images/Adventures/vik,iceland.jpg
+../assets/images/Adventures/Iquitos, Peru.jpg
+../assets/images/destination/Autumn in Kyoto.jpg
+../assets/images/destination/Machu Picchu, Peru.jpg
+../assets/images/Adventures/patagonia.jpg
+../assets/images/destination/Autumn in Kyoto.jpg
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/login.html ---
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/media-kit.html ---
+../assets/icons/logo.svg
+https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&q=80&w=1920
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/registration.html ---
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/stories.html ---
+../assets/icons/logo.svg
+https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=1920
+../assets/images/story-img/high plateau nomads.jpg
+../assets/images/Adventures/vik,iceland.jpg
+../assets/images/destination/Autumn in Kyoto.jpg
+../assets/images/Adventures/sahara.jpg
+../assets/images/story-img/mountain monastery.jpg
+https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=600
+../assets/icons/logo.svg
+--- FILE: c:/Users/tejes/Desktop/TerraVoyage/pages/story-detail.html ---
+../assets/icons/logo.svg
+../assets/images/collaborate/himalayas.jpg
+../assets/images/story-img/mountain monastery.jpg
+../assets/icons/logo.svg

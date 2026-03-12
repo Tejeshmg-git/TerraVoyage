@@ -81,19 +81,23 @@
 
         /* Narrative Sections */
         .section-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: var(--space-12);
-            padding: 100px 0;
+            padding: 0;
+            /* Let section container handle padding */
             align-items: center;
         }
 
-        .section-split.reverse {
-            direction: rtl;
+        .section-split .text-block {
+            flex: 1;
         }
 
-        .section-split.reverse .text-block {
-            direction: ltr;
+        .section-split .visual-block {
+            flex: 1;
+        }
+
+        .section-split.reverse {
+            flex-direction: row-reverse;
         }
 
         .text-block h2 {
@@ -119,7 +123,7 @@
         /* Impact Strip */
         .impact-strip {
             background: var(--color-surface);
-            padding: 80px 0;
+            padding: 40px 0;
             border-top: 1px solid var(--color-border);
             border-bottom: 1px solid var(--color-border);
         }
@@ -150,25 +154,25 @@
 
         /* Testimonial Panel */
         .testimonial-panel {
-            padding: 120px 0;
+            padding: 40px 0;
             text-align: center;
         }
 
         .quote-icon {
             color: var(--color-accent);
-            font-size: 40px;
-            margin-bottom: var(--space-6);
+            font-size: 28px;
+            margin-bottom: var(--space-2);
             display: block;
             font-family: var(--font-heading);
         }
 
         .quote-text {
             font-family: var(--font-heading);
-            font-size: clamp(24px, 4vw, 36px);
+            font-size: clamp(18px, 2.5vw, 24px);
             font-style: italic;
-            max-width: 900px;
-            margin: 0 auto var(--space-8);
-            line-height: 1.4;
+            max-width: 600px;
+            margin: 0 auto var(--space-4);
+            line-height: 1.5;
         }
 
         /* Gallery Grid */
@@ -176,7 +180,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: var(--space-6);
-            margin: 60px 0;
+            margin: 60px 0 0;
             width: 100%;
         }
 
@@ -187,6 +191,27 @@
             border-radius: var(--border-radius);
         }
 
+        /* =====================
+           RTL MODE — Case Study Page
+           ===================== */
+
+        /* Flip the two-column sections */
+        body.rtl-mode .section-split {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl-mode .section-split.reverse {
+            flex-direction: row;
+            /* Undo the reverse — back to normal for RTL */
+        }
+
+        body.rtl-mode .text-block {
+            text-align: right;
+        }
+
+        /* Gallery stays as-is */
+        /* Impact stays centered */
+
         @media (max-width: 1024px) {
             .impact-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -194,15 +219,76 @@
             }
         }
 
+        /* =====================================
+           CASE STUDY
+            – UNIFIED BACKGROUND FIX
+           ===================================== */
+        body.case-study-page {
+            background-color: var(--color-surface);
+            /* Unified background */
+        }
+
+        .case-study-page section,
+        .case-study-page .case-container,
+        .case-study-page main,
+        .case-study-page .wrapper {
+            background: transparent !important;
+        }
+
+        /* Ensure alternate patterns are removed */
+        .case-study-page section:nth-child(even),
+        .case-study-page section:nth-child(odd) {
+            background: transparent !important;
+        }
+
+        /* Hero exception - needs its own background but transparency for inner */
+        .case-study-page .case-hero-v2 {
+            padding: calc(var(--navbar-height) + 60px) 0 40px;
+            background-color: #000 !important;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .case-study-page .case-hero-v2 * {
+            background-color: transparent !important;
+        }
+
+        .case-study-page .impact-strip {
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        /* =====================================
+           CASE STUDY – FIX GAP BETWEEN 5 & 6
+           ===================================== */
+        .case-study-page .section-5 {
+            padding-bottom: 20px;
+            margin-bottom: 0;
+        }
+
+        .case-study-page .section-6 {
+            padding-top: 40px;
+            margin-top: 0;
+        }
+
+        /* =====================================
+           CASE STUDY – TESTIMONIAL TIGHT FIX
+           ===================================== */
+        .case-study-page .testimonial-section {
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+
         @media (max-width: 539px) {
             .section-split {
-                grid-template-columns: 1fr;
+                flex-direction: column !important;
                 gap: var(--space-8);
-                padding: 60px 0;
             }
 
-            .section-split.reverse {
-                direction: ltr;
+            body.rtl-mode .section-split,
+            body.rtl-mode .section-split.reverse {
+                flex-direction: column !important;
             }
 
             .impact-grid {
@@ -281,7 +367,7 @@
                         </svg>
                     </button>
                     <button class="rtl-toggle" id="rtl-toggle">LTR</button>
-                    <a href="login.html" class="login-link">Login</a>
+                    <a href="login.html" class="premium-cta header-cta">Become an Explorer</a>
                     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                         <span></span>
                         <span></span>
@@ -319,24 +405,24 @@
             <a href="stories.html">Stories</a>
             <a href="about.html">About</a>
             <a href="collaborate.html">Collaborate</a>
-            <a href="login.html">Login</a>
         </div>
-        <div class="mobile-actions" style="margin-top: auto;">
-            <button class="rtl-toggle" id="rtl-toggle-mobile" style="margin-bottom: var(--space-4);">LTR</button>
-            <a href="destinations.html" class="btn-primary" style="display: block; text-align: center;">Start
-                Exploring</a>
+        <div class="mobile-cta">
+            <a href="login.html" class="btn-primary full-width">
+                Become an Explorer
+            </a>
         </div>
     </div>
 
     <main>
         <!-- SECTION 1 — EPIC HERO -->
         <section class="case-hero-v2">
-            <img src="../assets/images/collaborate/himalayan landscape.jpg" alt="Voices of the Himalayas"
+            <img src="../assets/images/caseStudy-img/HeroSection-img.jpg" alt="Voices of the Himalayas"
                 class="case-hero-img" style="object-fit: cover; object-position: center;">
             <div class="case-hero-overlay"></div>
             <div class="case-container">
                 <div class="case-hero-content">
-                    <span class="hero-label" style="margin-bottom: 20px;">Featured Partnership / 2024</span>
+                    <span class="hero-label" style="margin-bottom: 20px; color: #000000;">Featured Partnership /
+                        2026</span>
                     <h1>Voices of the Himalayas</h1>
                     <p style="color: #ccc; font-size: 18px; max-width: 600px;">Documenting the intersection of climate
                         resilience and ancient cultural identity in remote Ladakh.</p>
@@ -345,27 +431,31 @@
         </section>
 
         <!-- SECTION 2 — NARRATIVE CHAPTER 1 -->
-        <section class="case-container">
-            <div class="section-split">
-                <div class="text-block">
-                    <span class="hero-label">Chapter I</span>
-                    <h2>The Challenge</h2>
-                    <p>The International Mountain Alliance (IMA) sought to move beyond clinical data points regarding
-                        glacial melt. Their objective was to create an emotional, narrative-rich campaign that would
-                        humanize the reality of climate change for a global audience.</p>
-                    <p>They needed a partner who could translate environmental crisis into human story, specifically
-                        targeting younger, conscious demographics who value traditional wisdom over abstract statistics.
-                    </p>
-                </div>
-                <div class="visual-block">
-                    <img src="../assets/images/collaborate/himalayan landscape.jpg"
-                        alt="Mountain Landscape Expedition Visual 1" style="object-position: center;">
+        <section>
+            <div class="case-container">
+                <div class="section-split">
+                    <div class="text-block">
+                        <span class="hero-label">Chapter I</span>
+                        <h2>The Challenge</h2>
+                        <p>The International Mountain Alliance (IMA) sought to move beyond clinical data points
+                            regarding
+                            glacial melt. Their objective was to create an emotional, narrative-rich campaign that would
+                            humanize the reality of climate change for a global audience.</p>
+                        <p>They needed a partner who could translate environmental crisis into human story, specifically
+                            targeting younger, conscious demographics who value traditional wisdom over abstract
+                            statistics.
+                        </p>
+                    </div>
+                    <div class="visual-block">
+                        <img src="../assets/images/caseStudy-img/Chapter1-img.jpg" alt="Path through Bamboo"
+                            style="object-position: center;">
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 3 — NARRATIVE CHAPTER 2 -->
-        <section style="background: var(--color-surface-alt);">
+        <section>
             <div class="case-container">
                 <div class="section-split reverse">
                     <div class="text-block">
@@ -378,8 +468,7 @@
                             landscape.</p>
                     </div>
                     <div class="visual-block">
-                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200"
-                            alt="Cultural Documentation">
+                        <img src="../assets/images/caseStudy-img/Chapter2-img.jpg" alt="Frozen Landscape">
                     </div>
                 </div>
             </div>
@@ -406,27 +495,31 @@
         </section>
 
         <!-- SECTION 5 — EXECUTION & GALLERY -->
-        <section class="case-container" style="padding: 100px 0;">
-            <div style="max-width: 900px; margin: 0 auto 60px; text-align: center;">
-                <span class="hero-label">Chapter III</span>
-                <h2 style="font-family: var(--font-heading); font-size: 42px; margin-bottom: var(--space-6);">Field
-                    Execution</h2>
-                <p style="font-size: 18px; color: var(--color-text-muted); line-height: 1.8;">The expedition involved
-                    traversing three high-altitude passes over 5,000m using traditional pack animals to minimize
-                    environmental footprint. We utilized cinema-grade mirrorless cameras with solar-charging arrays to
-                    maintain production quality in total off-grid environments.</p>
-            </div>
+        <section class="case-section section-5">
+            <div class="case-container">
+                <div style="max-width: 900px; margin: 0 auto 60px; text-align: center;">
+                    <span class="hero-label">Chapter III</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 42px; margin-bottom: var(--space-6);">Field
+                        Execution</h2>
+                    <p style="font-size: 18px; color: var(--color-text-muted); line-height: 1.8;">The expedition
+                        involved
+                        traversing three high-altitude passes over 5,000m using traditional pack animals to minimize
+                        environmental footprint. We utilized cinema-grade mirrorless cameras with solar-charging arrays
+                        to
+                        maintain production quality in total off-grid environments.</p>
+                </div>
 
-            <div class="gallery-grid">
-                <img src="../assets/images/story-img/high plateau nomads.jpg"
-                    alt="Mountain Landscape Expedition Visual 1" style="object-position: center;">
-                <img src="../assets/images/Adventures/ladakh.jpg" alt="Mountain Landscape Expedition Visual 2"
-                    style="object-position: center;">
+                <div class="gallery-grid">
+                    <img src="../assets/images/caseStudy-img/Mountain Landscape Expedition Visual 1.jpg"
+                        alt="Mountain Landscape Expedition Visual 1" style="object-position: center;">
+                    <img src="../assets/images/caseStudy-img/Mountain Landscape Expedition Visual 2.jpg"
+                        alt="Mountain Landscape Expedition Visual 2" style="object-position: center;">
+                </div>
             </div>
         </section>
 
         <!-- SECTION 6 — TESTIMONIAL PANEL -->
-        <section style="background: var(--color-surface);">
+        <section class="case-section section-6 testimonial-section">
             <div class="case-container testimonial-panel">
                 <span class="quote-icon">“</span>
                 <p class="quote-text">TerraVoyage gave a face and a voice to the data. They didn't just document a
@@ -438,17 +531,20 @@
         </section>
 
         <!-- SECTION 7 — RESULTS & FOOTNOTE -->
-        <section class="case-container"
-            style="padding: 100px 0; border-top: 1px solid var(--color-border); text-align: center;">
-            <h2 style="font-family: var(--font-heading); font-size: 36px; margin-bottom: var(--space-6);">The Result
-            </h2>
-            <p
-                style="font-size: 18px; color: var(--color-text-muted); max-width: 700px; margin: 0 auto var(--space-10); line-height: 1.8;">
-                The series was officially selected by three international film festivals and resulted in a direct policy
-                discussion at the Himalayan Sustainability Summit. The footage is now used as a digital archive for the
-                Zanskari Cultural Preservation Society.</p>
-            <a href="collaborate.html#contact" class="btn-primary"
-                style="padding: 18px 50px; font-weight: 700;">Redefine Your Story</a>
+        <section style="border-top: 1px solid var(--color-border); text-align: center;">
+            <div class="case-container">
+                <h2 style="font-family: var(--font-heading); font-size: 36px; margin-bottom: var(--space-6);">The Result
+                </h2>
+                <p
+                    style="font-size: 18px; color: var(--color-text-muted); max-width: 700px; margin: 0 auto var(--space-10); line-height: 1.8;">
+                    The series was officially selected by three international film festivals and resulted in a direct
+                    policy
+                    discussion at the Himalayan Sustainability Summit. The footage is now used as a digital archive for
+                    the
+                    Zanskari Cultural Preservation Society.</p>
+                <a href="collaborate.html#contact" class="btn-primary"
+                    style="padding: 18px 50px; font-weight: 700;">Redefine Your Story</a>
+            </div>
         </section>
 
     </main>
@@ -462,8 +558,8 @@
                     <img src="../assets/icons/logo.svg" alt="TerraVoyage Logo">
                     TerraVoyage
                 </a>
-                <p>TerraVoyage is a documentary-driven travel platform dedicated to exploring remote cultures, untold
-                    histories, and human stories shaped by landscape.</p>
+                <p>TerraVoyage captures cinematic journeys across mountains, oceans, cultures, and hidden paths —
+                    telling powerful human stories shaped by landscape, adventure, and discovery.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -503,7 +599,7 @@
             </div>
 
             <!-- Company -->
-           <div class="footer-column">
+            <div class="footer-column">
                 <h4>Company</h4>
                 <ul>
                     <li><a href="../index.html">Home V1</a></li>
@@ -530,7 +626,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <div class="bottom-left">
-                    <span>&copy; 2024 TerraVoyage. All rights reserved.</span>
+                    <span>&copy; <span id="year"></span> TerraVoyage. All rights reserved.</span>
                 </div>
                 <div class="bottom-center">
                     <a href="#">Privacy Policy</a>
@@ -539,14 +635,12 @@
                     <span class="separator">|</span>
                     <a href="#">Cookie Policy</a>
                 </div>
-                <div class="bottom-right">
-                    <span>Designed for Cinematic Excellence.</span>
-                </div>
             </div>
         </div>
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

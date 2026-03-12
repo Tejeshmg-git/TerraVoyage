@@ -104,11 +104,60 @@
             gap: var(--space-4);
         }
 
-        .image-break img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
+        .image-item {
+            position: relative;
+            overflow: hidden;
             border-radius: var(--border-radius);
+            height: 500px;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .image-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--space-6);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 2;
+        }
+
+        .image-overlay h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            margin-bottom: 4px;
+            color: #fff !important;
+        }
+
+        .image-overlay p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75) !important;
+            margin: 0 !important;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .image-break {
+                grid-template-columns: 1fr;
+            }
+
+            .image-item {
+                height: 400px;
+            }
         }
 
         .story-footer {
@@ -185,7 +234,7 @@
                         </svg>
                     </button>
                     <button class="rtl-toggle" id="rtl-toggle">LTR</button>
-                    <a href="login.html" class="login-link">Login</a>
+                    <a href="login.html" class="premium-cta header-cta">Become an Explorer</a>
                     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                         <span></span>
                         <span></span>
@@ -223,12 +272,11 @@
             <a href="stories.html">Stories</a>
             <a href="about.html">About</a>
             <a href="collaborate.html">Collaborate</a>
-            <a href="login.html">Login</a>
         </div>
-        <div class="mobile-actions" style="margin-top: auto;">
-            <button class="rtl-toggle" id="rtl-toggle-mobile" style="margin-bottom: var(--space-4);">LTR</button>
-            <a href="destinations.html" class="btn-primary" style="display: block; text-align: center;">Start
-                Exploring</a>
+        <div class="mobile-cta">
+            <a href="login.html" class="btn-primary full-width">
+                Become an Explorer
+            </a>
         </div>
     </div>
 
@@ -240,7 +288,7 @@
             <div class="story-meta">
                 <span>Marcus Thorne</span>
                 <div class="dot"></div>
-                <span>October 12, 2024</span>
+                <span>January 12, 2026</span>
                 <div class="dot"></div>
                 <span>12 Min Read</span>
             </div>
@@ -265,11 +313,26 @@
                 they cast shadows against the woolen tents. We gathered around butter-lamp fires, listening to elders
                 recount stories of the Great White Bear and the spirits that inhabit the glaciers.</p>
 
+            <p>The visual landscape of the high plateau is a study in contrasts—from the jagged, sun-bleached peaks that
+                frame the morning horizon to the unexpected pockets of verdant life that cling to the lower slopes.
+                These moments, captured in the fleeting light of the solstice, reveal the raw, unfiltered essence of the
+                wilderness.</p>
+
             <div class="image-break">
-                <img src="../assets/images/collaborate/himalayas.jpg" alt="Snowy peaks"
-                    style="object-position: center;">
-                <img src="../assets/images/story-img/mountain monastery.jpg" alt="Mountain monastery"
-                    style="object-position: center;">
+                <div class="image-item">
+                    <img src="../assets/images/story-detail/morning mountain.jpg" alt="Morning mountain">
+                    <div class="image-overlay">
+                        <h3>Karakoram Sunrise</h3>
+                        <p>The fragile warmth of dawn over the stark, high-altitude desert peaks.</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/story-detail/rainforest.jpg" alt="Rain forest">
+                    <div class="image-overlay">
+                        <h3>Hemis Woodland</h3>
+                        <p>An ancient cedar grove providing a sanctuary from the relentless mountain winds.</p>
+                    </div>
+                </div>
             </div>
 
             <p>But the pattern is changing. The silver streams are flowing earlier each year, and the grass that
@@ -301,8 +364,8 @@
                     <img src="../assets/icons/logo.svg" alt="TerraVoyage Logo">
                     TerraVoyage
                 </a>
-                <p>TerraVoyage is a documentary-driven travel platform dedicated to exploring remote cultures, untold
-                    histories, and human stories shaped by landscape.</p>
+                <p>TerraVoyage captures cinematic journeys across mountains, oceans, cultures, and hidden paths —
+                    telling powerful human stories shaped by landscape, adventure, and discovery.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -369,7 +432,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <div class="bottom-left">
-                    <span>&copy; 2024 TerraVoyage. All rights reserved.</span>
+                    <span>&copy; <span id="year"></span> TerraVoyage. All rights reserved.</span>
                 </div>
                 <div class="bottom-center">
                     <a href="#">Privacy Policy</a>
@@ -378,14 +441,12 @@
                     <span class="separator">|</span>
                     <a href="#">Cookie Policy</a>
                 </div>
-                <div class="bottom-right">
-                    <span>Designed for Cinematic Excellence.</span>
-                </div>
             </div>
         </div>
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

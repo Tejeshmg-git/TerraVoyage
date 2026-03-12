@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraVoyage | Cinematic Travel Experiences</title>
+    <title>TerraVoyage | Explore the Unseen — Home V2</title>
     <meta name="description"
-        content="Embark on premium, cinematic travel adventures with TerraVoyage. Explore breathtaking destinations and curated stories.">
+        content="TerraVoyage Home V2 — Cinematic travel experiences through untold stories. Watch our expedition films, explore journey highlights, and join the movement.">
 
     <script>
         (function () {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
-            // Keep body hidden until main.js restores RTL class → no flash
             document.documentElement.classList.add('page-loading');
         })();
     </script>
@@ -24,61 +23,761 @@
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
     <style>
-        .hero-overlay {
+        /* ============================================
+           HOME V2 — UNIQUE STYLES
+           ============================================ */
+
+        /* --- NAV OVERRIDES --- */
+        .login-link {
+            background: var(--color-accent);
+            color: #fff !important;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-link:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
+            color: #fff !important;
+        }
+
+        /* --- CINEMATIC HERO --- */
+        .v2-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .v2-hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            animation: v2HeroZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes v2HeroZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.08);
+            }
+        }
+
+        .v2-hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.15) 0%,
+                    rgba(0, 0, 0, 0.4) 50%,
+                    rgba(0, 0, 0, 0.85) 100%);
             transition: background 0.3s ease;
         }
 
-        [data-theme="light"] .hero-overlay {
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4)) !important;
+        [data-theme="light"] .v2-hero-overlay {
+            background: linear-gradient(rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.35)) !important;
         }
 
-        [data-theme="light"] .cta-section {
-            background-color: var(--color-surface-alt) !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+        .v2-hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 var(--space-6) 100px;
         }
 
-        [data-theme="light"] .hero-content h1,
-        [data-theme="light"] .hero-content p {
-            color: #000 !important;
+        .v2-hero-tag {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--color-accent);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-accent);
+            margin-bottom: var(--space-5);
+            backdrop-filter: blur(8px);
         }
 
-        [data-theme="light"] .hero-content .btn-ghost {
-            border-color: rgba(0, 0, 0, 0.4) !important;
-            color: #000 !important;
+        .v2-hero-title {
+            font-size: clamp(38px, 6vw, 72px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            color: #fff;
+            margin-bottom: var(--space-4);
         }
 
-        [data-theme="light"] .trust-logo {
-            opacity: 0.4;
-            filter: grayscale(1) invert(1);
-            transition: 0.3s;
+        .v2-hero-subtitle {
+            font-size: clamp(15px, 1.8vw, 19px);
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: var(--space-8);
         }
 
-        .feature-story-img img {
-            transition: 0.5s ease;
+        .v2-hero-actions {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
         }
 
-        .feature-story-img:hover img {
-            transform: scale(1.05);
+        .v2-hero-actions .btn-ghost {
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+            background: rgba(0, 0, 0, 0.3) !important;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
         }
 
-        .trust-logo {
-            opacity: 0.2;
-            filter: grayscale(1);
-            transition: 0.3s;
+        .v2-hero-actions .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: #fff !important;
+            transform: translateY(-2px);
         }
 
-        .trust-logo:hover {
+        .v2-hero-scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: v2ScrollBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes v2ScrollBounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        .v2-hero-scroll svg {
+            opacity: 0.5;
+        }
+
+        /* --- YOUTUBE PLAYLIST SECTION --- */
+        .v2-playlist-section {
+            padding: 100px var(--space-3);
+            background: var(--color-bg);
+        }
+
+        .v2-playlist-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-12);
+        }
+
+        .v2-playlist-header h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: var(--space-3);
+        }
+
+        .v2-playlist-header p {
+            font-size: 16px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .v2-playlist-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 32px;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .v2-playlist-main {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            background: #000;
+        }
+
+        .v2-playlist-main iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: block;
+            border: none;
+        }
+
+        .v2-playlist-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .v2-playlist-card {
+            display: flex;
+            gap: 16px;
+            padding: 12px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .v2-playlist-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(249, 115, 22, 0.1);
+        }
+
+        .v2-playlist-card.active {
+            border-color: var(--color-accent);
+            background: rgba(249, 115, 22, 0.06);
+            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.15);
+        }
+
+        .v2-playlist-card-thumb {
+            width: 100px;
+            min-width: 100px;
+            height: 64px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .v2-playlist-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .v2-playlist-card-thumb::after {
+            content: "▶";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .v2-playlist-card:hover .v2-playlist-card-thumb::after {
+            opacity: 1;
+        }
+
+        .v2-playlist-card-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .v2-playlist-card-info p {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* --- JOURNEY HIGHLIGHTS GRID --- */
+        .v2-highlights-section {
+            padding: 100px var(--space-3);
+            background: var(--color-surface-alt);
+        }
+
+        .v2-highlights-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-12);
+        }
+
+        .v2-highlights-header h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: var(--space-3);
+        }
+
+        .v2-highlights-header p {
+            font-size: 16px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .v2-highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 320px);
+            gap: var(--space-4);
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .v2-highlight-card {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .v2-highlight-card:nth-child(1) {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        .v2-highlight-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .v2-highlight-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .v2-highlight-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.85) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--space-5);
+            transition: all 0.3s ease;
+        }
+
+        .v2-highlight-card:hover .v2-highlight-overlay {
+            background: linear-gradient(180deg, transparent 20%, rgba(0, 0, 0, 0.95) 100%);
+        }
+
+        .v2-highlight-overlay h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .v2-highlight-overlay p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .v2-highlight-overlay .v2-highlight-tag {
+            display: inline-block;
+            padding: 5px 14px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--color-accent);
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+            width: fit-content;
+            backdrop-filter: blur(4px);
+        }
+
+        /* --- TRAVEL STATS SECTION --- */
+        .v2-stats-section {
+            padding: 80px var(--space-3);
+            background: var(--color-bg);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .v2-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--space-6);
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .v2-stat-item {
+            text-align: center;
+            padding: var(--space-6) var(--space-2);
+            position: relative;
+        }
+
+        .v2-stat-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: var(--color-border);
+        }
+
+        .v2-stat-number {
+            font-size: clamp(36px, 4vw, 56px);
+            font-weight: 900;
+            font-family: var(--font-heading);
+            background: linear-gradient(135deg, var(--color-accent), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: var(--space-2);
+        }
+
+        .v2-stat-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* --- TESTIMONIAL BANNER --- */
+        .v2-testimonial-banner {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .v2-testimonial-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .v2-testimonial-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+        }
+
+        [data-theme="light"] .v2-testimonial-overlay {
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .v2-testimonial-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: var(--space-12) var(--space-6);
+        }
+
+        .v2-testimonial-quote-icon {
+            font-size: 72px;
+            color: var(--color-accent);
+            font-family: var(--font-heading);
+            line-height: 1;
+            margin-bottom: var(--space-4);
             opacity: 0.8;
         }
 
-        @media (max-width: 768px) {
-            .trust-logos-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
+        .v2-testimonial-text {
+            font-size: clamp(22px, 3.5vw, 36px);
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: #fff;
+            line-height: 1.5;
+            margin-bottom: var(--space-6);
+        }
+
+        .v2-testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .v2-testimonial-author-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .v2-testimonial-author-role {
+            font-size: 13px;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* --- STRONG CTA SECTION --- */
+        .v2-cta-section {
+            position: relative;
+            padding: 120px var(--space-3);
+            text-align: center;
+            overflow: hidden;
+            background: var(--color-bg);
+        }
+
+        .v2-cta-section::before {
+            content: "";
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .v2-cta-inner {
+            position: relative;
+            max-width: 750px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .v2-cta-inner h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: var(--space-4);
+            letter-spacing: -1px;
+        }
+
+        .v2-cta-inner p {
+            font-size: clamp(16px, 2vw, 19px);
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin-bottom: var(--space-10);
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .v2-cta-buttons {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .v2-cta-buttons .btn-primary {
+            padding: 20px 50px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .v2-cta-buttons .btn-ghost {
+            padding: 20px 50px;
+            font-size: 16px;
+        }
+
+        .v2-cta-trust {
+            margin-top: var(--space-10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+            color: var(--color-text-muted);
+            font-size: 13px;
+        }
+
+        .v2-cta-trust svg {
+            color: var(--color-accent);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            .v2-hero-content {
+                padding: 0 var(--space-4) 80px;
             }
 
-            .how-we-work-grid {
-                grid-template-columns: 1fr !important;
+            .v2-playlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .v2-playlist-sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: var(--space-2);
+            }
+
+            .v2-playlist-card {
+                min-width: 280px;
+                flex-shrink: 0;
+            }
+
+            .v2-highlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+
+            .v2-highlight-card:nth-child(1) {
+                grid-column: 1 / 2;
+                grid-row: auto;
+            }
+
+            .v2-highlight-card {
+                min-height: 260px;
+            }
+
+            .v2-stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-4);
+            }
+
+            .v2-stat-item:nth-child(3)::after {
+                display: none;
+            }
+
+            .v2-stat-item:nth-child(4),
+            .v2-stat-item:nth-child(5) {
+                grid-column: span 1;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 576px) {
+            .v2-hero {
+                min-height: 90vh;
+            }
+
+            .v2-hero-content {
+                padding: 0 var(--space-3) 60px;
+            }
+
+            .v2-hero-title {
+                letter-spacing: -1px;
+            }
+
+            .v2-hero-actions {
+                flex-direction: column;
+            }
+
+            .v2-hero-actions a {
+                text-align: center;
+            }
+
+            .v2-hero-scroll {
+                display: none;
+            }
+
+            .v2-playlist-section {
+                padding: 60px var(--space-3);
+            }
+
+            .v2-playlist-sidebar {
+                flex-direction: column;
+            }
+
+            .v2-playlist-card {
+                min-width: auto;
+            }
+
+            .v2-playlist-card-thumb {
+                width: 90px;
+                min-width: 90px;
+                height: 60px;
+            }
+
+            .v2-highlights-section {
+                padding: 60px var(--space-3);
+            }
+
+            .v2-highlights-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .v2-highlight-card {
+                min-height: 220px;
+            }
+
+            .v2-stats-section {
+                padding: 50px var(--space-3);
+            }
+
+            .v2-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-2);
+            }
+
+            .v2-stat-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .v2-stat-item {
+                padding: var(--space-4) var(--space-2);
+            }
+
+            .v2-stat-number {
+                font-size: 32px;
+            }
+
+            .v2-testimonial-banner {
+                min-height: 400px;
+            }
+
+            .v2-testimonial-content {
+                padding: var(--space-8) var(--space-4);
+            }
+
+            .v2-cta-section {
+                padding: 80px var(--space-3);
+            }
+
+            .v2-cta-buttons .btn-primary,
+            .v2-cta-buttons .btn-ghost {
+                padding: 16px 36px;
+                font-size: 15px;
+                width: 100%;
+            }
+
+            .v2-cta-trust {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -142,7 +841,7 @@
                         </svg>
                     </button>
                     <button class="rtl-toggle" id="rtl-toggle">LTR</button>
-                    <a href="pages/login.html" class="login-link">Login</a>
+                    <a href="pages/login.html" class="premium-cta header-cta">Become an Explorer</a>
                     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                         <span></span>
                         <span></span>
@@ -180,293 +879,255 @@
             <a href="pages/stories.html">Stories</a>
             <a href="pages/about.html">About</a>
             <a href="pages/collaborate.html">Collaborate</a>
-            <a href="pages/login.html">Login</a>
         </div>
-        <div class="mobile-actions" style="margin-top: auto;">
-            <button class="rtl-toggle" id="rtl-toggle-mobile" style="margin-bottom: var(--space-4);">LTR</button>
-            <a href="pages/destinations.html" class="btn-primary" style="display: block; text-align: center;">Start
-                Exploring</a>
+        <div class="mobile-cta">
+            <a href="pages/login.html" class="btn-primary full-width">
+                Become an Explorer
+            </a>
         </div>
     </div>
 
     <main>
-        <!-- SECTION 1 — HERO (V2: Character-Driven) -->
-        <section class="hero"
-            style="position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: var(--color-bg);">
-            <div class="hero-content"
-                style="position: relative; z-index: 3; max-width: 900px; padding: 0 var(--space-4);">
-                <span class="hero-label"
-                    style="margin-bottom: var(--space-4); background: rgba(249, 115, 22, 0.2); color: var(--color-accent); border: 1px solid var(--color-accent); display: inline-block; padding: 6px 16px; border-radius: 40px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">The
-                    human lens</span>
-                <h1
-                    style="font-size: clamp(42px, 7vw, 68px); font-weight: 800; letter-spacing: -1px; margin-bottom: var(--space-4); line-height: 1.1;">
-                    The Shoreline Chronicles:<br>Where Land Meets Legend</h1>
-                <p
-                    style="font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,0.9); margin-bottom: var(--space-8); line-height: 1.7; max-width: 750px; margin-left: auto; margin-right: auto;">
-                    Venture beyond the horizon to discover the maritime cultures and hidden inlets of the Atlantic's
-                    rugged edge.
-                    Our coastal expeditions reveal the secrets of the deep and the stories of those who call the ocean
-                    home.</p>
-                <div class="hero-btns"
-                    style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-                    <a href="pages/destinations.html" class="btn-primary"
-                        style="padding: 18px 42px; font-size: 16px; min-width: 220px;">Embark on an Expedition</a>
-                    <a href="pages/collaborate.html" class="btn-ghost"
-                        style="padding: 18px 42px; font-size: 16px; min-width: 220px;">Contact Coastal Lead</a>
-                </div>
-            </div>
-            <div class="hero-overlay"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)); z-index: 2;">
-            </div>
-            <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&q=80&w=1920"
-                alt="Rugged coastal landscape" class="hero-bg"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0.9;">
-        </section>
+        <!-- ============================================
+             SECTION 1 — CINEMATIC HERO (Full-Width with Left-Aligned Overlay)
+             ============================================ -->
+        <section class="v2-hero" id="v2-hero">
+            <img src="assets/images/home_v2-img/hero-img.jpg"
+                alt="Cinematic aerial view of a winding mountain road through misty valleys" class="v2-hero-bg">
+            <div class="v2-hero-overlay"></div>
 
-        <!-- SECTION 2 — CORE PILLARS (Philosophy First in V2) -->
-        <section class="section-container bg-surface-alt" style="padding: 100px var(--space-3);">
-            <div class="section-header centered">
-                <span class="hero-label" style="margin-bottom: var(--space-3);">Our Philosophy</span>
-                <h2 style="margin-bottom: var(--space-8);">The Ethos of Slow Travel</h2>
+            <div class="v2-hero-content">
+                <span class="v2-hero-tag">Season 02 — Now Streaming</span>
+                <h1 class="v2-hero-title">Beyond the<br>Horizon Line</h1>
+                <p class="v2-hero-subtitle">
+                    Our second season takes you deep into the uncharted valleys and forgotten coasts where the earth
+                    still speaks in ancient tongues. Watch. Feel. Remember.
+                </p>
+                <div class="v2-hero-actions">
+                    <a href="pages/adventures.html" class="btn-primary hero-cta"
+                        style="padding: 18px 42px; font-size: 16px;">Watch Season 02</a>
+                    <a href="pages/stories.html" class="btn-ghost hero-cta"
+                        style="padding: 18px 42px; font-size: 16px;">Behind
+                        the Scenes</a>
+                </div>
             </div>
-            <div class="philosophy-grid">
-                <div class="card"
-                    style="padding: var(--space-6); background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div class="icon-box" style="margin-bottom: var(--space-4); color: var(--color-accent);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                            <path d="M2 12h20" />
-                        </svg>
-                    </div>
-                    <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Deeper Roots</h3>
-                    <p style="font-size: 14px; color: var(--color-text-muted);">We don't just visit; we embed within
-                        communities to understand their unique rhythm.</p>
-                </div>
-                <div class="card"
-                    style="padding: var(--space-6); background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div class="icon-box" style="margin-bottom: var(--space-4); color: var(--color-accent);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 6.1H3" />
-                            <path d="M21 12.1H3" />
-                            <path d="M15 18.1H3" />
-                        </svg>
-                    </div>
-                    <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Ancestral Echoes</h3>
-                    <p style="font-size: 14px; color: var(--color-text-muted);">A commitment to documenting oral
-                        histories and vanishing traditions.</p>
-                </div>
-                <div class="card"
-                    style="padding: var(--space-6); background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div class="icon-box" style="margin-bottom: var(--space-4); color: var(--color-accent);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2z" />
-                            <circle cx="12" cy="12" r="3" />
-                        </svg>
-                    </div>
-                    <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Cinematic Truth</h3>
-                    <p style="font-size: 14px; color: var(--color-text-muted);">Using high-end cinematography to capture
-                        the emotional reality of the world.</p>
-                </div>
+
+            <div class="v2-hero-scroll">
+                <span>Scroll</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6" />
+                </svg>
             </div>
         </section>
 
-        <!-- SECTION 3 — FEATURED STORY -->
-        <section class="section-container" style="padding: 100px var(--space-3);">
-            <div class="grid-two-col" style="gap: var(--space-12); align-items: center;">
-                <div class="feature-story-img"
-                    style="overflow: hidden; border-radius: var(--border-radius); border: 1px solid var(--color-border);">
-                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=1200"
-                        alt="Himalayan Nomads"
-                        style="width: 100%; height: 600px; object-fit: cover; object-position: center;">
+        <!-- ============================================
+             SECTION 2 — YOUTUBE PLAYLIST
+             ============================================ -->
+        <section class="v2-playlist-section" id="v2-playlist">
+            <div class="v2-playlist-header">
+                <span class="hero-label" style="margin-bottom: var(--space-3);">Watch Our Films</span>
+                <h2>Expedition Playlist</h2>
+                <p>Full-length documentary films from our global expeditions. Each episode captures a unique culture,
+                    landscape, and human experience.</p>
+            </div>
+
+            <div class="v2-playlist-grid">
+                <!-- Main Video Player -->
+                <div class="v2-playlist-main">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vj9XngP5MWY?si=oymRS01b4MhV3q9E"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
-                <div class="feature-story-text" style="padding: var(--space-4);">
-                    <span class="hero-label" style="margin-bottom: var(--space-3);">Beyond the Map</span>
-                    <h2 style="font-size: clamp(32px, 4vw, 42px); margin-bottom: var(--space-4); line-height: 1.2;">
-                        The Last Nomads of the High Plateau</h2>
-                    <p
-                        style="font-size: 17px; color: var(--color-text-muted); margin-bottom: var(--space-8); line-height: 1.8;">
-                        Deep in the Zanskar range, we lived alongside the Changpa nomads. V2 explorers witness the
-                        unfiltered reality of nomadic life through our lens, discovering hope in the harshest
-                        climates on Earth.</p>
-                    <a href="pages/story-detail.html" class="btn-secondary" style="padding: 14px 32px;">Explore the
-                        Story</a>
+
+                <!-- Sidebar Playlist Cards -->
+                <div class="v2-playlist-sidebar">
+                    <a href="#" class="v2-playlist-card"
+                        data-video="https://www.youtube.com/embed/uD0ww8E0Za8?si=JLr3fg4igJSUu1zX">
+                        <div class="v2-playlist-card-thumb">
+                            <img src="assets/images/home_v2-img/sahara.jpg" alt="Desert expedition thumbnail">
+                        </div>
+                        <div class="v2-playlist-card-info">
+                            <h4>Ep 01 — Sands of Solitude</h4>
+                            <p>Sahara Desert · 42 min</p>
+                        </div>
+                    </a>
+                    <a href="#" class="v2-playlist-card"
+                        data-video="https://www.youtube.com/embed/gD89hfPh4vY?si=OmXqRRhdX9iSorF5">
+                        <div class="v2-playlist-card-thumb">
+                            <img src="assets/images/home_v2-img/FrozenMeridian.jpg" alt="Arctic expedition thumbnail">
+                        </div>
+                        <div class="v2-playlist-card-info">
+                            <h4>Ep 02 — Frozen Meridian</h4>
+                            <p>Arctic Circle · 38 min</p>
+                        </div>
+                    </a>
+                    <a href="#" class="v2-playlist-card"
+                        data-video="https://www.youtube.com/embed/8ibgkwouP4g?si=t2qLDyKe7xRB9ayq">
+                        <div class="v2-playlist-card-thumb">
+                            <img src="assets/images/home_v2-img/Rain-forest.jpg" alt="Rainforest expedition thumbnail">
+                        </div>
+                        <div class="v2-playlist-card-info">
+                            <h4>Ep 03 — Canopy Voices</h4>
+                            <p>Amazon Rainforest · 51 min</p>
+                        </div>
+                    </a>
+                    <a href="#" class="v2-playlist-card"
+                        data-video="https://www.youtube.com/embed/G8ljsw51lMQ?si=5-H7EFmkah0ErQWa">
+                        <div class="v2-playlist-card-thumb">
+                            <img src="assets/images/home_v2-img/above-the-clouds.jpg"
+                                alt="Mountain expedition thumbnail">
+                        </div>
+                        <div class="v2-playlist-card-info">
+                            <h4>Ep 04 — Above the Clouds</h4>
+                            <p>Andes Mountains · 45 min</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3.5 — HOW WE WORK -->
-        <section class="section-container" style="padding: 80px var(--space-3); text-align: center;">
-            <div class="section-header centered">
-                <h2 style="margin-bottom: var(--space-8);">How We Work</h2>
+        <!-- ============================================
+             SECTION 3 — JOURNEY HIGHLIGHTS GRID (Image-Based, No Icons)
+             ============================================ -->
+        <section class="v2-highlights-section" id="v2-highlights">
+            <div class="v2-highlights-header">
+                <span class="hero-label" style="margin-bottom: var(--space-3);">Journey Highlights</span>
+                <h2>Moments That Define Us</h2>
+                <p>Every expedition holds transformative encounters. Here are the moments our crew will never
+                    forget — told through the lens.</p>
             </div>
-            <div class="how-we-work-grid"
-                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-10); max-width: 1000px; margin: 0 auto;">
-                <div class="work-step">
-                    <div
-                        style="font-size: 16px; font-weight: 800; color: var(--color-accent); margin-bottom: var(--space-2); font-family: var(--font-heading);">
-                        01</div>
-                    <h3 style="font-size: 20px; margin-bottom: var(--space-3);">Research & Respect</h3>
-                    <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.7;">We spend months
-                        building relationships with local guides and communities before filming begins.</p>
-                </div>
-                <div class="work-step">
-                    <div
-                        style="font-size: 16px; font-weight: 800; color: var(--color-accent); margin-bottom: var(--space-2); font-family: var(--font-heading);">
-                        02</div>
-                    <h3 style="font-size: 20px; margin-bottom: var(--space-3);">Immersive Exploration</h3>
-                    <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.7;">We travel slowly,
-                        staying as guests in local homes to capture the unscripted reality of life.</p>
-                </div>
-                <div class="work-step">
-                    <div
-                        style="font-size: 16px; font-weight: 800; color: var(--color-accent); margin-bottom: var(--space-2); font-family: var(--font-heading);">
-                        03</div>
-                    <h3 style="font-size: 20px; margin-bottom: var(--space-3);">Documentary Craft</h3>
-                    <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.7;">Each journey is
-                        meticulously edited into a high-end cinematic narrative that honors the source.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- SECTION 4 — FEATURED DESTINATIONS -->
-        <section class="section-container" style="padding: 80px var(--space-3);">
-            <div class="section-header">
-                <h2>Featured Journeys</h2>
-            </div>
-            <div class="destination-grid">
-                <div class="card" style="position: relative; overflow: hidden; border-radius: var(--border-radius);">
-                    <img src="assets/images/Adventures/patagonia.jpg" alt="Patagonia"
-                        style="width: 100%; height: 400px; object-fit: cover; object-position: center; transition: transform 0.5s ease;">
-                    <div
-                        style="position: absolute; bottom: 0; left: 0; width: 100%; padding: var(--space-4); background: linear-gradient(transparent, rgba(0,0,0,0.8));">
-                        <h3 style="color: #fff; margin-bottom: 4px;">Patagonia, Chile</h3>
-                        <p style="font-size: 14px; color: rgba(255,255,255,0.7);">Untamed wilderness at the end of the
-                            world.
-                        </p>
+            <div class="v2-highlights-grid">
+                <!-- Card 1 — Tall Left -->
+                <div class="v2-highlight-card">
+                    <img src="assets/images/home_v2-img/Mongolian nomad on horseback across the steppe.jpg"
+                        alt="Mongolian nomad on horseback across the steppe">
+                    <div class="v2-highlight-overlay">
+                        <span class="v2-highlight-tag">Central Asia</span>
+                        <h3>Riders of the Steppe</h3>
+                        <p>Horseback culture across the vast Mongolian plains at golden hour.</p>
                     </div>
                 </div>
-                <div class="card" style="position: relative; overflow: hidden; border-radius: var(--border-radius);">
-                    <img src="assets/images/Adventures/ladakh.jpg" alt="Ladakh"
-                        style="width: 100%; height: 400px; object-fit: cover; object-position: center; transition: transform 0.5s ease;">
-                    <div
-                        style="position: absolute; bottom: 0; left: 0; width: 100%; padding: var(--space-4); background: linear-gradient(transparent, rgba(0,0,0,0.8));">
-                        <h3 style="color: #fff; margin-bottom: 4px;">Ladakh, India</h3>
-                        <p style="font-size: 14px; color: rgba(255,255,255,0.7);">High Himalayan culture and monastic
-                            peaks.</p>
+
+                <!-- Card 2 -->
+                <div class="v2-highlight-card">
+                    <img src="assets/images/home_v2-img/Northern lights over a fjord in Norway.jpg"
+                        alt="Northern lights over a fjord in Norway">
+                    <div class="v2-highlight-overlay">
+                        <span class="v2-highlight-tag">Scandinavia</span>
+                        <h3>Aurora Over the Fjords</h3>
+                        <p>Northern lights reflecting on still fjord waters at midnight.</p>
                     </div>
                 </div>
-                <div class="card" style="position: relative; overflow: hidden; border-radius: var(--border-radius);">
-                    <img src="assets/images/Adventures/vik,iceland.jpg" alt="Iceland"
-                        style="width: 100%; height: 400px; object-fit: cover; object-position: center; transition: transform 0.5s ease;">
-                    <div
-                        style="position: absolute; bottom: 0; left: 0; width: 100%; padding: var(--space-4); background: linear-gradient(transparent, rgba(0,0,0,0.8));">
-                        <h3 style="color: #fff; margin-bottom: 4px;">Vik, Iceland</h3>
-                        <p style="font-size: 14px; color: rgba(255,255,255,0.7);">The land of fire and ice.</p>
+
+                <!-- Card 3 -->
+                <div class="v2-highlight-card">
+                    <img src="assets/images/home_v2-img/Quechua woman weaving colorful textiles in Peru.jpg"
+                        alt="Quechua woman weaving colorful textiles in Peru">
+                    <div class="v2-highlight-overlay">
+                        <span class="v2-highlight-tag">South America</span>
+                        <h3>Weavers of the Sacred Valley</h3>
+                        <p>Ancient Quechua textile traditions in the Peruvian highlands.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="v2-highlight-card">
+                    <img src="assets/images/home_v2-img/Bamboo forest path in Kyoto Japan.jpg"
+                        alt="Bamboo forest path in Kyoto Japan">
+                    <div class="v2-highlight-overlay">
+                        <span class="v2-highlight-tag">East Asia</span>
+                        <h3>Whispers in Bamboo</h3>
+                        <p>Walking the ancient pilgrim paths through Kyoto's bamboo groves.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="v2-highlight-card">
+                    <img src="assets/images/home_v2-img/Blue streets of Chefchaouen Morocco.jpg"
+                        alt="Blue streets of Chefchaouen Morocco">
+                    <div class="v2-highlight-overlay">
+                        <span class="v2-highlight-tag">North Africa</span>
+                        <h3>The Blue Labyrinth</h3>
+                        <p>Lost in the indigo-washed alleyways of Chefchaouen at dawn.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 5 — STORYTELLERS PREVIEW -->
-        <section class="section-container bg-surface-alt" style="padding: 100px var(--space-3); text-align: center;">
-            <div class="section-header centered">
-                <h2>Meet the Storytellers</h2>
-            </div>
-            <div class="storyteller-grid" style="margin-top: var(--space-8);">
-                <div class="storyteller-item" style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=300"
-                        alt="Elias Vance"
-                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
-                    <h3 style="font-size: 20px; margin-bottom: 4px;">Elias Vance</h3>
-                    <p
-                        style="color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: var(--space-2);">
-                        Founder & Director</p>
-                    <p style="font-size: 14px; color: var(--color-text-muted); max-width: 250px;">A filmmaker
-                        documenting the world's remote edges.</p>
+        <!-- ============================================
+             SECTION 4 — TRAVEL STATS
+             ============================================ -->
+        <section class="v2-stats-section" id="v2-stats">
+            <div class="v2-stats-grid">
+                <div class="v2-stat-item">
+                    <div class="v2-stat-number">72</div>
+                    <div class="v2-stat-label">Expeditions</div>
                 </div>
-                <div class="storyteller-item" style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300"
-                        alt="Julian Moretti"
-                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
-                    <h3 style="font-size: 20px; margin-bottom: 4px;">Julian Moretti</h3>
-                    <p
-                        style="color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: var(--space-2);">
-                        Lead Photographer</p>
-                    <p style="font-size: 14px; color: var(--color-text-muted); max-width: 250px;">Capturing raw light in
-                        extreme environments.</p>
+                <div class="v2-stat-item">
+                    <div class="v2-stat-number">6</div>
+                    <div class="v2-stat-label">Continents</div>
                 </div>
-                <div class="storyteller-item" style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300"
-                        alt="Sofia Romano"
-                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
-                    <h3 style="font-size: 20px; margin-bottom: 4px;">Sofia Romano</h3>
-                    <p
-                        style="color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: var(--space-2);">
-                        Cultural Liaison</p>
-                    <p style="font-size: 14px; color: var(--color-text-muted); max-width: 250px;">Empowering indigenous
-                        voices globally.</p>
+                <div class="v2-stat-item">
+                    <div class="v2-stat-number">240+</div>
+                    <div class="v2-stat-label">Hours Filmed</div>
+                </div>
+                <div class="v2-stat-item">
+                    <div class="v2-stat-number">18</div>
+                    <div class="v2-stat-label">Languages Spoken</div>
+                </div>
+                <div class="v2-stat-item">
+                    <div class="v2-stat-number">35K</div>
+                    <div class="v2-stat-label">Community</div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 6 — IMPACT METRICS -->
-        <section class="metrics-band" style="padding: 60px 0; background: var(--color-surface); margin-top: 40px;">
-            <div class="metrics-container"
-                style="display: flex; justify-content: space-around; max-width: 1000px; margin: 0 auto; gap: var(--space-4);">
-                <div style="text-align: center;">
-                    <div style="font-size: 48px; font-weight: 800; color: var(--color-accent);">50+</div>
-                    <p
-                        style="font-size: 12px; text-transform: uppercase; color: var(--color-text-muted); letter-spacing: 2px;">
-                        Destinations</p>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 48px; font-weight: 800; color: var(--color-accent);">4</div>
-                    <p
-                        style="font-size: 12px; text-transform: uppercase; color: var(--color-text-muted); letter-spacing: 2px;">
-                        Continents</p>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 48px; font-weight: 800; color: var(--color-accent);">100+</div>
-                    <p
-                        style="font-size: 12px; text-transform: uppercase; color: var(--color-text-muted); letter-spacing: 2px;">
-                        Hours Filmed</p>
+        <!-- ============================================
+             SECTION 5 — TESTIMONIAL BANNER (Background Image)
+             ============================================ -->
+        <section class="v2-testimonial-banner" id="v2-testimonial">
+            <img src="assets/images/home_v2-img/Sunset behind mountain silhouettes.jpg"
+                alt="Sunset behind mountain silhouettes" class="v2-testimonial-bg">
+            <div class="v2-testimonial-overlay"></div>
+
+            <div class="v2-testimonial-content">
+                <div class="v2-testimonial-quote-icon">"</div>
+                <p class="v2-testimonial-text">
+                    TerraVoyage changed the way I see travel entirely. Their films aren't just beautiful — they carry
+                    the weight of real human connection. I've never felt so close to places I've never been.
+                </p>
+                <div class="v2-testimonial-author">
+                    <span class="v2-testimonial-author-name">Amara Osei</span>
+                    <span class="v2-testimonial-author-role">Documentary Filmmaker & Explorer</span>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 6.5 — TESTIMONIAL -->
-        <section class="section-container" style="padding: 100px var(--space-3); text-align: center;">
-            <div
-                style="max-width: 900px; margin: 0 auto; padding: var(--space-12) var(--space-6); background: var(--color-surface-alt); border-radius: 20px; border: 1px solid var(--color-border);">
-                <div
-                    style="color: var(--color-accent); font-size: 48px; margin-bottom: var(--space-4); font-family: var(--font-heading);">
-                    “</div>
-                <p
-                    style="font-size: clamp(20px, 4vw, 32px); font-family: var(--font-heading); font-style: italic; line-height: 1.5; margin-bottom: var(--space-8); max-width: 700px; margin-left: auto; margin-right: auto;">
-                    TerraVoyage doesn’t just document places — they document humanity.</p>
-                <p
-                    style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--color-text-muted);">
-                    — Cultural Partner, Nepal</p>
-            </div>
-        </section>
-
-        <!-- SECTION 7 — FINAL CTA -->
-        <section class="cta-section"
-            style="padding: 120px var(--space-3); background: var(--color-bg); text-align: center; border-top: 1px solid var(--color-border); transition: 0.3s ease;">
-            <div class="cta-content" style="max-width: 700px; margin: 0 auto;">
-                <h2 style="font-size: clamp(32px, 5vw, 48px); margin-bottom: var(--space-4); line-height: 1.2;">Let’s
-                    Tell Stories That Matter.</h2>
-                <p
-                    style="font-size: clamp(16px, 2vw, 18px); color: var(--color-text-muted); margin-bottom: var(--space-8); max-width: 550px; margin-left: auto; margin-right: auto;">
-                    Meaningful travel begins with intention. Join us in documenting the world's most resonant
-                    narratives.</p>
-                <a href="pages/collaborate.html" class="btn-primary"
-                    style="padding: 18px 42px; font-size: 16px;">Collaborate With Us</a>
+        <!-- ============================================
+             SECTION 6 — STRONG CTA
+             ============================================ -->
+        <section class="v2-cta-section" id="v2-cta">
+            <div class="v2-cta-inner">
+                <span class="hero-label" style="margin-bottom: var(--space-4);">Ready to Move?</span>
+                <h2>Your Story Begins<br>at the Edge of the Map.</h2>
+                <p>
+                    Whether you're a filmmaker, a cultural researcher, or a soul seeking the untouched — there's a seat
+                    for you on our next expedition.
+                </p>
+                <div class="v2-cta-buttons">
+                    <a href="pages/collaborate.html" class="btn-primary">Join an Expedition</a>
+                    <a href="pages/destinations.html" class="btn-ghost">View All Destinations</a>
+                </div>
+                <div class="v2-cta-trust">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <span>Trusted by 35,000+ explorers worldwide</span>
+                </div>
             </div>
         </section>
     </main>
@@ -480,8 +1141,8 @@
                     <img src="assets/icons/logo.svg" alt="TerraVoyage Logo">
                     TerraVoyage
                 </a>
-                <p>TerraVoyage is a documentary-driven travel platform dedicated to exploring remote cultures, untold
-                    histories, and human stories shaped by landscape.</p>
+                <p>TerraVoyage captures cinematic journeys across mountains, oceans, cultures, and hidden paths —
+                    telling powerful human stories shaped by landscape, adventure, and discovery.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -523,12 +1184,12 @@
             <div class="footer-column">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="../index.html">Home V1</a></li>
-                    <li><a href="../home-v2.html">Home V2</a></li>
-                    <li><a href="about.html">Our Story</a></li>
-                    <li><a href="collaborate.html">Collaborate</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="../404.html">404 Page</a></li>
+                    <li><a href="index.html">Home V1</a></li>
+                    <li><a href="home-v2.html">Home V2</a></li>
+                    <li><a href="pages/about.html">Our Story</a></li>
+                    <li><a href="pages/collaborate.html">Collaborate</a></li>
+                    <li><a href="pages/login.html">Login</a></li>
+                    <li><a href="404.html">404 Page</a></li>
                 </ul>
             </div>
 
@@ -547,7 +1208,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <div class="bottom-left">
-                    <span>&copy; 2024 TerraVoyage. All rights reserved.</span>
+                    <span>&copy; <span id="year"></span> TerraVoyage. All rights reserved.</span>
                 </div>
                 <div class="bottom-center">
                     <a href="#">Privacy Policy</a>
@@ -556,14 +1217,33 @@
                     <span class="separator">|</span>
                     <a href="#">Cookie Policy</a>
                 </div>
-                <div class="bottom-right">
-                    <span>Designed for Cinematic Excellence.</span>
-                </div>
             </div>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    <script>
+        // Playlist card video switcher
+        (function () {
+            const cards = document.querySelectorAll('.v2-playlist-card[data-video]');
+            const mainIframe = document.querySelector('.v2-playlist-main iframe');
+            if (!mainIframe || !cards.length) return;
+
+            cards.forEach(function (card) {
+                card.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const videoUrl = this.getAttribute('data-video');
+                    if (videoUrl) {
+                        mainIframe.src = videoUrl;
+                    }
+                    // Toggle active state
+                    cards.forEach(function (c) { c.classList.remove('active'); });
+                    this.classList.add('active');
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>

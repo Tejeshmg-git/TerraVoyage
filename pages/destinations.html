@@ -106,14 +106,6 @@
             background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4)) !important;
         }
 
-        [data-theme="light"] .hero-content h1 {
-            color: #000 !important;
-        }
-
-        [data-theme="light"] .hero-content p {
-            color: #1a1a1a !important;
-        }
-
         [data-theme="light"] .hero-content .eyebrow {
             text-shadow: none;
         }
@@ -139,17 +131,27 @@
            RTL MODE — Destinations Page
            ===================== */
 
-        /* Featured Destination block — reverse image/text columns */
+        body.rtl-mode .destination-card {
+            text-align: right;
+            direction: rtl;
+        }
+
+        /* Featured Destination block — reverse via native direction */
         body.rtl-mode .featured-dest-block {
             direction: rtl;
         }
 
         body.rtl-mode .featured-dest-block>div {
             text-align: right;
+            direction: rtl;
         }
 
-        /* Seasonal Spotlight — reverse image/text columns */
+        /* Seasonal Spotlight — reverse via native direction */
         body.rtl-mode .seasonal-spotlight-grid {
+            direction: rtl;
+        }
+
+        body.rtl-mode .seasonal-spotlight-grid>div {
             direction: rtl;
         }
 
@@ -157,37 +159,28 @@
             text-align: right;
         }
 
-        /* Keep filter pills & centered heads centered */
+        /* Keep filter pills, style cards, explore cards & headers centered but RTL aware */
+        body.rtl-mode .style-card,
+        body.rtl-mode .grid-four-col>div,
         body.rtl-mode .dest-container [style*="text-align: center"],
         body.rtl-mode .section-header.centered {
-            direction: ltr;
+            direction: rtl;
             text-align: center !important;
         }
 
-        /* Global Footprint stats — reverse stat order in RTL, keep text centered */
+        /* Global Footprint stats — native RTL */
         body.rtl-mode .global-footprint-stats {
-            flex-direction: row-reverse;
+            direction: rtl;
         }
 
         body.rtl-mode .global-footprint-stats>div {
             text-align: center;
-            /* always centered regardless of RTL */
         }
 
-        /* Mobile: reset RTL stacking to ltr (readable order) */
+        /* Mobile: Keep stack intact without left-align breaks */
         @media (max-width: 768px) {
 
-            body.rtl-mode .featured-dest-block,
-            body.rtl-mode .seasonal-spotlight-grid {
-                direction: ltr;
-            }
-
-            body.rtl-mode .featured-dest-block>div,
-            body.rtl-mode .seasonal-spotlight-grid>div:last-child {
-                text-align: left;
-            }
-
-            /* Global footprint: same column stack in LTR and RTL */
+            /* Global footprint: maintain clean column stacking */
             .global-footprint-stats,
             body.rtl-mode .global-footprint-stats {
                 flex-direction: column;
@@ -255,7 +248,7 @@
                         </svg>
                     </button>
                     <button class="rtl-toggle" id="rtl-toggle">LTR</button>
-                    <a href="login.html" class="login-link">Login</a>
+                    <a href="login.html" class="premium-cta header-cta">Become an Explorer</a>
                     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                         <span></span>
                         <span></span>
@@ -293,36 +286,28 @@
             <a href="stories.html">Stories</a>
             <a href="about.html">About</a>
             <a href="collaborate.html">Collaborate</a>
-            <a href="login.html">Login</a>
         </div>
-        <div class="mobile-actions" style="margin-top: auto;">
-            <button class="rtl-toggle" id="rtl-toggle-mobile" style="margin-bottom: var(--space-4);">LTR</button>
-            <a href="destinations.html" class="btn-primary" style="display: block; text-align: center;">Start
-                Exploring</a>
+        <div class="mobile-cta">
+            <a href="login.html" class="btn-primary full-width">
+                Become an Explorer
+            </a>
         </div>
     </div>
 
     <main>
         <!-- SECTION 1 — HERO -->
-        <section class="hero-banner"
+        <section class="hero-banner destinations-hero"
             style="position: relative; min-height: calc(65vh + var(--navbar-height)); display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: #000; padding-top: var(--navbar-height);">
-            <div class="hero-content"
-                style="position: relative; z-index: 3; max-width: 850px; padding: 0 var(--space-4);">
+            <div class="hero-content">
                 <span class="hero-label" style="margin-bottom: var(--space-3);">Explore the World</span>
-                <h1
-                    style="font-size: clamp(42px, 7vw, 64px); margin-bottom: var(--space-4); line-height: 1.1; font-family: var(--font-heading);">
-                    Curated Destinations</h1>
-                <p
-                    style="font-size: 18px; color: rgba(255,255,255,0.9); max-width: 650px; margin: 0 auto; line-height: 1.7;">
-                    From hidden cultural sanctuaries to remote landscapes, discover journeys crafted with depth and
+                <h1>Curated Destinations</h1>
+                <p>From hidden cultural sanctuaries to remote landscapes, discover journeys crafted with depth and
                     intention.</p>
             </div>
-            <div class="hero-overlay"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)); z-index: 2;">
+            <div class="hero-bg" style="position: absolute; inset: 0; z-index: 1;">
+                <img src="../assets/images/Hero-img_homev2.png" alt="Cinematic Worldscape"
+                    style="width: 100%; height: 100%; object-fit: cover;">
             </div>
-            <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1920"
-                alt="Cinematic Worldscape" class="hero-bg"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
         </section>
 
         <!-- SECTION 2 — FILTER BAR -->
@@ -342,13 +327,16 @@
         <!-- SECTION 3 — DESTINATIONS GRID -->
         <section style="padding: 30px 0;">
             <div class="dest-container">
+                <div class="section-header centered" style="margin-bottom: var(--space-10);">
+                    <h2 style="font-family: var(--font-heading); font-size: 36px;">Our Destinations</h2>
+                </div>
                 <div class="destination-grid"
                     style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--grid-gap);">
+
                     <!-- Destination 1 -->
                     <div class="destination-card" style="display: flex; flex-direction: column; cursor: pointer;">
                         <div class="dest-card-img-wrapper">
-                            <img src="../assets/images/Adventures/patagonia.jpg" alt="Patagonia"
-                                style="object-position: center;">
+                            <img src="../assets/images/destination/Patagonia, Chile.jpg" alt="Patagonia">
                         </div>
                         <div style="padding: var(--space-4) 0;">
                             <span
@@ -358,40 +346,39 @@
                                 Chile</h3>
                         </div>
                     </div>
+
                     <!-- Destination 2 -->
                     <div class="destination-card" style="display: flex; flex-direction: column; cursor: pointer;">
                         <div class="dest-card-img-wrapper">
-                            <img src="../assets/images/Adventures/ladakh.jpg" alt="Ladakh"
-                                style="object-position: center;">
+                            <img src="../assets/images/destination/Zanskar, Ladakh.jpg" alt="Ladakh">
                         </div>
                         <div style="padding: var(--space-4) 0;">
                             <span
                                 style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-accent); font-weight: 600;">Asia
                                 — High Altitude</span>
                             <h3 style="font-family: var(--font-heading); font-size: 24px; margin-top: 4px;">Zanskar,
-                                Ladakh
-                            </h3>
+                                Ladakh</h3>
                         </div>
                     </div>
+
                     <!-- Destination 3 -->
                     <div class="destination-card" style="display: flex; flex-direction: column; cursor: pointer;">
                         <div class="dest-card-img-wrapper">
-                            <img src="../assets/images/Adventures/vik,iceland.jpg" alt="Iceland"
-                                style="object-position: center;">
+                            <img src="../assets/images/destination/Vik, Iceland.jpg" alt="Iceland">
                         </div>
                         <div style="padding: var(--space-4) 0;">
                             <span
                                 style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-accent); font-weight: 600;">Europe
                                 — Expedition</span>
-                            <h3 style="font-family: var(--font-heading); font-size: 24px; margin-top: 4px;">Vik,
-                                Iceland</h3>
+                            <h3 style="font-family: var(--font-heading); font-size: 24px; margin-top: 4px;">Vik, Iceland
+                            </h3>
                         </div>
                     </div>
+
                     <!-- Destination 4 -->
                     <div class="destination-card" style="display: flex; flex-direction: column; cursor: pointer;">
                         <div class="dest-card-img-wrapper">
-                            <img src="../assets/images/Adventures/Iquitos, Peru.jpg" alt="Amazon"
-                                style="object-position: center;">
+                            <img src="../assets/images/destination/Iquitos, Peru.jpg" alt="Amazon">
                         </div>
                         <div style="padding: var(--space-4) 0;">
                             <span
@@ -401,11 +388,11 @@
                                 Peru</h3>
                         </div>
                     </div>
+
                     <!-- Destination 5 -->
                     <div class="destination-card" style="display: flex; flex-direction: column; cursor: pointer;">
                         <div class="dest-card-img-wrapper">
-                            <img src="../assets/images/destination/Autumn in Kyoto.jpg" alt="Kyoto"
-                                style="object-position: center;">
+                            <img src="../assets/images/destination/Asia — Spiritual.jpg" alt="Kyoto">
                         </div>
                         <div style="padding: var(--space-4) 0;">
                             <span
@@ -415,21 +402,21 @@
                             </h3>
                         </div>
                     </div>
+
                     <!-- Destination 6 -->
                     <div class="destination-card" style="display: flex; flex-direction: column; cursor: pointer;">
                         <div class="dest-card-img-wrapper">
-                            <img src="../assets/images/destination/Machu Picchu, Peru.jpg" alt="Machu Picchu"
-                                style="object-position: center;">
+                            <img src="../assets/images/destination/Machu Picchu, Peru.jpg" alt="Machu Picchu">
                         </div>
                         <div style="padding: var(--space-4) 0;">
                             <span
                                 style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-accent); font-weight: 600;">Americas
                                 — Ancient</span>
                             <h3 style="font-family: var(--font-heading); font-size: 24px; margin-top: 4px;">Machu
-                                Picchu,
-                                Peru</h3>
+                                Picchu, Peru</h3>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -440,7 +427,7 @@
                 <div class="featured-dest-block">
                     <div
                         style="overflow: hidden; border-radius: var(--border-radius); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35);">
-                        <img src="../assets/images/Adventures/patagonia.jpg" alt="Patagonia Wilderness"
+                        <img src="../assets/images/destination/Alpine Majesty.jpg" alt="Alpine Majesty"
                             style="width: 100%; height: 500px; object-fit: cover; object-position: center;">
                     </div>
                     <div style="padding: var(--space-6) 0;">
@@ -457,7 +444,6 @@
                         <a href="adventures.html" class="btn-primary" style="padding: 16px 36px;">Learn More</a>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 
@@ -724,8 +710,8 @@
                     <img src="../assets/icons/logo.svg" alt="TerraVoyage Logo">
                     TerraVoyage
                 </a>
-                <p>TerraVoyage is a documentary-driven travel platform dedicated to exploring remote cultures, untold
-                    histories, and human stories shaped by landscape.</p>
+                <p>TerraVoyage captures cinematic journeys across mountains, oceans, cultures, and hidden paths —
+                    telling powerful human stories shaped by landscape, adventure, and discovery.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -792,7 +778,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <div class="bottom-left">
-                    <span>&copy; 2024 TerraVoyage. All rights reserved.</span>
+                    <span>&copy; <span id="year"></span> TerraVoyage. All rights reserved.</span>
                 </div>
                 <div class="bottom-center">
                     <a href="#">Privacy Policy</a>
@@ -801,14 +787,12 @@
                     <span class="separator">|</span>
                     <a href="#">Cookie Policy</a>
                 </div>
-                <div class="bottom-right">
-                    <span>Designed for Cinematic Excellence.</span>
-                </div>
             </div>
         </div>
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

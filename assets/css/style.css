@@ -56,6 +56,294 @@ body {
     --color-border: rgba(255, 255, 255, 0.1);
 }
 
+/* ======================================
+   HOME V1 – RESPONSIVE HERO SYSTEM
+   ====================================== */
+
+.home-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* vertical center */
+    justify-content: center;
+    /* horizontal center */
+    text-align: center;
+    min-height: 90vh;
+    padding: 80px 20px 0;
+    /* top 80px (header match), equal left/right 20px */
+    overflow: hidden;
+    color: #ffffff !important;
+}
+
+.home-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.35));
+    z-index: 2;
+}
+
+.home-hero .hero-content {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+.home-hero h1,
+.home-hero p,
+.home-hero .btn-secondary {
+    color: #ffffff !important;
+}
+
+.home-hero p {
+    opacity: 0.9;
+}
+
+.home-hero .btn-ghost {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 📱 Mobile Optimization (≤ 576px) */
+@media (max-width: 576px) {
+    .home-hero {
+        min-height: 85vh;
+        padding: 40px 20px;
+    }
+
+    .home-hero h1 {
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .home-hero p {
+        font-size: 1rem !important;
+    }
+}
+
+/* 📲 Tablet (577px – 991px) */
+@media (min-width: 577px) and (max-width: 991px) {
+    .home-hero {
+        min-height: 88vh;
+    }
+
+    .home-hero h1 {
+        font-size: 2.8rem !important;
+    }
+
+    .home-hero p {
+        font-size: 1.05rem !important;
+    }
+}
+
+/* 💻 Laptop (992px – 1200px) */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .home-hero h1 {
+        font-size: 3.2rem !important;
+    }
+}
+
+/* 🖥 Large Desktop (1200px+) */
+@media (min-width: 1201px) {
+    .home-hero h1 {
+        font-size: 3.8rem !important;
+    }
+}
+
+/* ======================================
+   DESTINATIONS PAGE – HERO OVERLAY
+   ====================================== */
+
+.destinations-hero .hero-bg {
+    position: relative;
+}
+
+.destinations-hero .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.destinations-hero .hero-content {
+    position: relative;
+    z-index: 5;
+}
+
+.destinations-hero h1,
+.destinations-hero p {
+    color: #ffffff !important;
+}
+
+.destinations-hero h1 {
+    font-size: clamp(32px, 6vw, 52px) !important;
+    line-height: 1.1 !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.destinations-hero p {
+    font-size: clamp(16px, 2vw, 18px) !important;
+    max-width: 650px !important;
+    margin: 0 auto !important;
+}
+
+/* =====================================
+   ADVENTURES HERO — CONTRAST FIX
+   ===================================== */
+
+.adventures-hero .hero-bg {
+    position: relative;
+}
+
+.adventures-hero .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    /* Lighter than Destinations as img is darker */
+    pointer-events: none;
+    z-index: 2;
+}
+
+.adventures-hero .hero-content {
+    position: relative;
+    z-index: 5;
+}
+
+.adventures-hero h1,
+.adventures-hero p {
+    color: #ffffff !important;
+}
+
+.adventures-hero h1 {
+    font-size: clamp(32px, 6vw, 52px) !important;
+    line-height: 1.1 !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.adventures-hero p {
+    font-size: clamp(16px, 2vw, 18px) !important;
+    max-width: 650px !important;
+    margin: 0 auto var(--space-8) !important;
+}
+
+/* =====================================
+   STORIES HERO — CONTRAST FIX
+   ===================================== */
+
+.stories-hero .hero-bg {
+    position: relative;
+}
+
+.stories-hero .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.stories-hero .hero-content {
+    position: relative;
+    z-index: 5;
+}
+
+.stories-hero h1,
+.stories-hero p {
+    color: #ffffff !important;
+}
+
+.stories-hero h1 {
+    font-size: clamp(32px, 6vw, 52px) !important;
+    line-height: 1.1 !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.stories-hero p {
+    font-size: clamp(16px, 2vw, 18px) !important;
+    max-width: 650px !important;
+    margin: 0 auto var(--space-8) !important;
+}
+
+/* =====================================
+   MEDIA KIT HERO — IMAGE & CONTRAST FIX
+   ===================================== */
+
+.media-hero {
+    position: relative;
+    padding: calc(var(--navbar-height) + 120px) 0 100px;
+    text-align: center;
+    background-color: #000;
+    overflow: hidden;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/Media-kit-imgs/HeroSection-img.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.media-hero .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.media-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+.media-hero h1,
+.media-hero p {
+    color: #ffffff !important;
+}
+
+.media-hero h1 {
+    font-size: clamp(32px, 6vw, 52px) !important;
+    line-height: 1.1 !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.media-hero p {
+    font-size: clamp(16px, 2vw, 18px) !important;
+    max-width: 650px !important;
+    margin: 0 auto !important;
+}
+
+.media-hero .hero-label-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff !important;
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+}
+
 /* =====================
    HERO — LIGHT THEME (Global)
    ===================== */
@@ -65,23 +353,7 @@ body {
 }
 
 [data-theme="light"] .hero-overlay {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4)) !important;
-}
-
-[data-theme="light"] .hero-content h1,
-[data-theme="light"] .hero-content h2 {
-    color: #000 !important;
-    text-shadow: none !important;
-}
-
-[data-theme="light"] .hero-content p {
-    color: #1a1a1a !important;
-    font-weight: inherit !important;
-}
-
-[data-theme="light"] .hero-content .btn-ghost {
-    border-color: rgba(0, 0, 0, 0.4) !important;
-    color: #000 !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)) !important;
 }
 
 /* =====================
@@ -174,72 +446,120 @@ body {
    Hero sections explicitly excluded — always stay centered.
    ===================== */
 
-/* Flip layout containers in RTL */
-body.rtl-mode .nav-container {
-    flex-direction: row-reverse;
-}
+/* =====================
+   RTL HEADER — Clean Mirror System
+   3 containers: [Brand] [Navigation] [Actions]
+   LTR: Brand | Nav | Actions  (left → right)
+   RTL: Actions | Nav(reversed) | Brand  (left → right)
+   ===================== */
 
+/* 1️⃣ Swap the 3 containers: Brand goes right, Actions go left */
 body.rtl-mode .header-container {
     flex-direction: row-reverse;
 }
 
-body.rtl-mode .header-actions {
-    flex-direction: row;
-    /* Avoid double flip if parent is flipped */
+/* 2️⃣ Brand pushes to the right edge in RTL */
+body.rtl-mode .header-left {
+    justify-content: flex-end;
 }
 
-/* Ensure Logo children are in correct order when container is flipped */
+/* 2b. Actions push to the left edge in RTL */
+body.rtl-mode .header-right {
+    justify-content: flex-start;
+}
+
 body.rtl-mode .logo a {
+    flex-direction: row;
+    /* icon then text — never reversed internally */
+}
+
+/* 3️⃣ Reverse navigation link order (Collaborate→Home instead of Home→Collaborate) */
+body.rtl-mode .nav-links {
     flex-direction: row-reverse;
 }
 
+/* 4️⃣ Actions container — keep internal order (Theme, RTL, Login) intact */
 body.rtl-mode .header-actions {
     flex-direction: row;
-    gap: 12px;
+    /* don't double-reverse — parent already flipped */
+    gap: 24px;
+    /* Match LTR spacing exactly */
 }
 
+/* 5️⃣ Hamburger spacing — flip margin side */
 body.rtl-mode .hamburger {
-    margin-left: 8px;
-    margin-right: 0;
+    margin-left: 0;
+    margin-right: 8px;
+    margin-inline-start: 0;
+    margin-inline-end: 8px;
 }
 
+/* 6️⃣ Dropdown menu alignment — flip to right-aligned in RTL */
+body.rtl-mode .has-dropdown .dropdown-menu {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%) translateY(10px);
+}
+
+body.rtl-mode .has-dropdown:hover .dropdown-menu {
+    transform: translateX(50%) translateY(5px);
+}
+
+/* 7️⃣ Nav container general flip */
+body.rtl-mode .nav-container {
+    flex-direction: row-reverse;
+}
+
+/* =====================
+   RTL FOOTER — Clean Mirror System
+   Uses flex-direction: row-reverse (NOT direction: rtl)
+   to avoid text punctuation issues
+   ===================== */
 body.rtl-mode .footer-container {
-    direction: rtl;
-    text-align: right;
+    flex-direction: row-reverse;
+    /* Mirror column order */
 }
 
 body.rtl-mode .footer-bottom-container {
     flex-direction: row-reverse;
 }
 
+/* RTL Footer text alignment — right-aligned */
 body.rtl-mode .footer-brand,
 body.rtl-mode .footer-column,
-body.rtl-mode .footer-newsletter {
-    align-items: flex-start !important;
+body.rtl-mode .footer-newsletter,
+body.rtl-mode .footer-column h4 {
     text-align: right !important;
 }
 
-body.rtl-mode .footer-logo {
-    flex-direction: row;
-    /* Avoid double flip if direction: rtl is parent */
+/* RTL Footer column links — align to right */
+body.rtl-mode .footer-column ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
+body.rtl-mode .footer-column .collapsible-trigger {
+    justify-content: flex-end;
+}
+
+/* Social links — push to right in RTL */
+body.rtl-mode .social-links {
+    justify-content: flex-end;
+}
+
+/* Newsletter button — push to right in RTL */
 body.rtl-mode .newsletter-form button {
-    align-self: flex-start;
-    /* flex-start is right side in RTL */
+    align-self: flex-end;
 }
 
-body.ltr-mode .footer-column ul {
-    align-items: flex-end !important;
-}
-
-body.ltr-mode .footer-column .collapsible-trigger {
-    justify-content: flex-end !important;
-    width: 100%;
-}
-
+/* Bottom bar text swap */
 body.rtl-mode .bottom-right {
     text-align: left;
+}
+
+body.rtl-mode .bottom-left {
+    text-align: right;
 }
 
 body.rtl-mode .section-header:not(.centered) {
@@ -247,7 +567,7 @@ body.rtl-mode .section-header:not(.centered) {
 }
 
 body.rtl-mode .feature-list li {
-    direction: rtl;
+    flex-direction: row-reverse;
     text-align: right;
 }
 
@@ -264,7 +584,6 @@ body.rtl-mode .about-hero-content,
 body.rtl-mode .collab-hero,
 body.rtl-mode .collab-hero-content,
 body.rtl-mode .hero-btns {
-    direction: ltr;
     text-align: center;
     flex-direction: row;
     justify-content: center;
@@ -332,8 +651,7 @@ img {
     transition: padding 0.3s ease;
 }
 
-/* RTL: Reverse the entire container as one unit */
-/* RTL: Handled in consolidate section above */
+/* RTL header handled in consolidated RTL section above */
 
 .header-left,
 .header-center,
@@ -406,11 +724,38 @@ img {
     gap: 24px;
 }
 
-.login-link {
-    font-size: 14px;
+.premium-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 24px;
+    background-color: var(--color-accent);
+    color: #FFFFFF !important;
+    border-radius: 30px;
     font-weight: 600;
-    color: var(--color-text);
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     white-space: nowrap;
+    border: none;
+    cursor: pointer;
+}
+
+.premium-cta:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3);
+    color: #FFFFFF !important;
+}
+
+/* Ensure mobile menu link remains clean if class is shared */
+.mobile-nav-links .premium-cta {
+    display: block;
+    margin: var(--space-4) var(--space-6);
+    text-align: center;
+    background-color: var(--color-accent);
 }
 
 .hamburger,
@@ -438,11 +783,7 @@ img {
     /* Spacting from other actions */
 }
 
-/* RTL adjustment for hamburger margin */
-body.rtl-mode .hamburger {
-    margin-left: 0;
-    margin-right: 8px;
-}
+/* RTL hamburger margin — handled in consolidated RTL header section above */
 
 .hamburger span {
     display: block;
@@ -523,18 +864,6 @@ body.rtl-mode .mobile-nav {
     left: 0;
     transform: translateX(-100%);
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
-    direction: rtl;
-}
-
-body.rtl-mode .mobile-nav.active {
-    transform: translateX(0);
-}
-
-/* RTL Mobile Nav */
-body.rtl-mode .mobile-nav {
-    right: auto;
-    left: 0;
-    transform: translateX(-100%);
 }
 
 body.rtl-mode .mobile-nav.active {
@@ -543,12 +872,24 @@ body.rtl-mode .mobile-nav.active {
 
 body.rtl-mode .mobile-nav-links {
     text-align: right;
+    direction: rtl;
 }
 
 .mobile-nav-links {
     display: flex;
     flex-direction: column;
     gap: 24px;
+}
+
+.mobile-nav-links a {
+    text-decoration: none;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-links a:hover,
+.mobile-nav-links a.active {
+    color: var(--color-accent);
 }
 
 /* Dropdown Styles */
@@ -697,16 +1038,20 @@ body.rtl-mode .has-dropdown:hover .dropdown-icon {
     padding-inline-start: 6px;
 }
 
-/* Mobile Dropdown */
 .mobile-nav-links .has-dropdown {
     flex-direction: column;
     align-items: flex-start;
 }
 
+body.rtl-mode .mobile-nav-links .has-dropdown {
+    align-items: flex-end;
+}
+
 .mobile-dropdown-toggle {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 8px;
     width: 100%;
     cursor: pointer;
 }
@@ -820,35 +1165,227 @@ body.rtl-mode .mobile-dropdown-menu {
         gap: 32px !important;
     }
 
-    /* Tablet Footer: 4 Columns (Full Row) */
-    .footer-container {
-        grid-template-columns: 1.2fr 1fr 1fr 1.2fr !important;
+    /* Tablet Footer: keep flex layout only above 992px (handled by base styles).
+       For 768–992px see the dedicated @media block below. */
+}
+
+/* ---- Tablet Footer (≤992px) — 2-Column Grid ---- */
+/* Balanced layout: Brand + Newsletter (heavy) on row 1,
+   Explore + Company (link lists) on row 2 */
+@media (max-width: 992px) {
+    footer .footer-container {
         display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 40px !important;
         padding: 60px 24px !important;
-        gap: 32px !important;
-        text-align: left !important;
+        flex-wrap: unset !important;
     }
 
-    body.rtl-mode .footer-container {
-        text-align: right !important;
+    /* Reorder for balanced rows: Brand(1) | Newsletter(2) / Explore(3) | Company(4) */
+    .footer-brand {
+        order: 1 !important;
+    }
+
+    .footer-newsletter {
+        order: 2 !important;
+    }
+
+    /* Explore = 2nd child (.footer-column:nth-child(2)) */
+    .footer-column:nth-child(2) {
+        order: 3 !important;
+    }
+
+    /* Company = 3rd child (.footer-column:nth-child(3)) */
+    .footer-column:nth-child(3) {
+        order: 4 !important;
     }
 
     .footer-brand,
     .footer-column,
     .footer-newsletter {
-        align-items: flex-start !important;
-        text-align: left !important;
+        min-width: 0 !important;
+        width: 100% !important;
     }
 
-    body.rtl-mode .footer-brand,
-    body.rtl-mode .footer-column,
-    body.rtl-mode .footer-newsletter {
-        align-items: flex-end !important;
-        text-align: right !important;
+    .footer-newsletter {
+        max-width: 100% !important;
     }
 
-    .footer-column {
-        width: 100%;
+    .footer-bottom-container {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 12px !important;
+        align-items: center !important;
+    }
+
+    .bottom-center {
+        justify-content: center !important;
+    }
+}
+
+/* ---- Small Mobile Footer (≤576px) — Single Column ---- */
+@media (max-width: 576px) {
+    footer .footer-container {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        padding: 40px 20px !important;
+        gap: 32px !important;
+    }
+
+    .footer-brand,
+    .footer-column,
+    .footer-newsletter {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .social-links {
+        justify-content: center !important;
+    }
+
+    .footer-logo {
+        justify-content: center !important;
+    }
+
+    body.rtl-mode .footer-logo {
+        justify-content: center !important;
+    }
+
+    .newsletter-form button {
+        width: 100% !important;
+    }
+}
+
+/* Mobile UX Improvements */
+@media (max-width: 768px) {
+    .header-cta {
+        display: none !important;
+    }
+
+    /* 🔧 FIX HERO MOBILE BUTTON TOUCHING NEXT SECTION */
+    .hero,
+    .hero-banner,
+    .v2-hero,
+    .about-hero,
+    .collab-hero,
+    .case-hero-v2,
+    .media-hero {
+        min-height: auto !important;
+        height: auto !important;
+        padding-bottom: 60px !important;
+    }
+
+    .hero-content,
+    .v2-hero-content,
+    .about-hero-content,
+    .collab-hero-content,
+    .case-hero-content {
+        justify-content: flex-start !important;
+        padding-top: 100px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .hero-btns,
+    .v2-hero-actions,
+    .hero-cta {
+        margin-bottom: 40px !important;
+    }
+
+    /* 🔧 REDUCE SECTION SPACING – ADVENTURE PAGE (Mobile Only) */
+    .adventures-page section,
+    .adventure-page section {
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+    }
+
+    .adventures-page section+section,
+    .adventure-page section+section {
+        margin-top: 0 !important;
+    }
+
+    .adventures-page h2,
+    .adventure-page h2 {
+        margin-bottom: 16px !important;
+    }
+
+    .adventures-page p,
+    .adventure-page p {
+        margin-bottom: 12px !important;
+    }
+}
+
+/* 🔥 SMALL TABLET → HAMBURGER MODE */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .header-center,
+    .nav-links-wrapper,
+    .header-cta {
+        display: none !important;
+    }
+
+    .hamburger {
+        display: flex !important;
+    }
+}
+
+.mobile-cta,
+.drawer-cta {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+}
+
+.menu-open .mobile-cta,
+.menu-open .drawer-cta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-cta .btn-primary,
+.drawer-cta .btn-primary {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 12px;
+    display: block;
+}
+
+/* 🔥 LARGE TABLET → SLIM DESKTOP MODE */
+@media (min-width: 1024px) and (max-width: 1200px) {
+    .header-container {
+        padding: 0 24px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-left,
+    .header-center,
+    .header-right {
+        flex: none;
+        width: auto;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+        letter-spacing: 0.5px;
+    }
+
+    .header-cta {
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+    }
+
+    .logo a {
+        font-size: 20px;
+        gap: 8px;
     }
 }
 
@@ -877,6 +1414,46 @@ body.rtl-mode .mobile-dropdown-menu {
         font-size: 19px;
     }
 
+    /* ── Mobile RTL Header Spacing Refinement ── */
+    /* In RTL: header-container is row-reversed, so:
+       - header-left (Brand) is visually on RIGHT → push content to flex-end (outer edge)
+       - header-right (Actions) is visually on LEFT → push content to flex-start (outer edge) */
+
+    body.rtl-mode .header-container {
+        padding: 0 16px;
+        /* Equal horizontal padding both sides */
+    }
+
+    body.rtl-mode .header-left {
+        justify-content: flex-end;
+        /* Brand pushes to outer right edge */
+    }
+
+    body.rtl-mode .header-right {
+        justify-content: flex-start;
+        /* Actions push to outer left edge */
+    }
+
+    /* Consistent spacing between action items on mobile */
+    body.rtl-mode .header-actions {
+        gap: 12px;
+        /* Uniform spacing: Theme ↔ RTL ↔ Hamburger */
+    }
+
+    /* Hamburger aligns cleanly to outer left edge in RTL */
+    body.rtl-mode .hamburger {
+        margin-left: 0;
+        margin-right: 0;
+        /* No extra margin — gap handles spacing */
+        order: -1;
+        /* Move hamburger to the leftmost position in actions */
+    }
+
+    /* Reset hamburger order in LTR — it should stay rightmost */
+    .hamburger {
+        order: 0;
+    }
+
     h1 {
         font-size: clamp(32px, 9vw, 42px) !important;
     }
@@ -885,17 +1462,37 @@ body.rtl-mode .mobile-dropdown-menu {
         font-size: clamp(26px, 7vw, 32px) !important;
     }
 
-    /* Mobile Footer: Structured Stacking */
+    /* Mobile Footer: Structured Stacking — Brand → Newsletter → Explore → Company */
     .footer-container {
-        display: flex !important;
-        flex-direction: column !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
         align-items: flex-start !important;
         text-align: left !important;
-        padding: 40px 16px !important;
+        padding: 40px 20px !important;
         gap: 40px !important;
     }
 
+    /* Consistent order: matches tablet balanced layout */
+    .footer-brand {
+        order: 1 !important;
+    }
+
+    .footer-newsletter {
+        order: 2 !important;
+    }
+
+    .footer-column:nth-child(2) {
+        order: 3 !important;
+    }
+
+    /* Company */
+    .footer-column:nth-child(3) {
+        order: 4 !important;
+    }
+
+    /* RTL mobile — stays stacked, just right-aligned */
     body.rtl-mode .footer-container {
+        /* Grid handles stacking — just override text alignment */
         align-items: flex-start !important;
         text-align: right !important;
     }
@@ -905,13 +1502,14 @@ body.rtl-mode .mobile-dropdown-menu {
     .footer-newsletter {
         align-items: flex-start !important;
         text-align: left !important;
-        width: 100%;
+        width: 100% !important;
+        min-width: 0 !important;
     }
 
     body.rtl-mode .footer-brand,
     body.rtl-mode .footer-column,
     body.rtl-mode .footer-newsletter {
-        align-items: flex-start !important;
+        align-items: flex-end !important;
         text-align: right !important;
     }
 
@@ -1140,19 +1738,39 @@ body.rtl-mode .mobile-dropdown-menu {
 }
 
 .footer {
-    background-color: var(--color-surface);
+    background: linear-gradient(180deg, #0f172a 0%, #0b0f1a 100%);
     border-top: 1px solid var(--color-border);
     color: var(--color-text-muted);
+}
+
+[data-theme="light"] .footer {
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid !important;
-    grid-template-columns: 1.4fr 1fr 1fr 1.2fr !important;
-    gap: 60px;
-    padding: 80px 20px;
-    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    padding: 80px 40px;
+    align-items: flex-start;
+}
+
+/* Footer column sizing — replicate the 1.4fr 1fr 1fr 1.2fr ratio */
+.footer-brand {
+    flex: 1.4;
+    min-width: 220px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 140px;
+}
+
+.footer-newsletter {
+    flex: 1.2;
+    min-width: 200px;
 }
 
 /* ---- Brand Column ---- */
@@ -1178,6 +1796,7 @@ body.rtl-mode .mobile-dropdown-menu {
 
 body.rtl-mode .footer-logo {
     flex-direction: row;
+    justify-content: flex-end;
 }
 
 .footer-logo img {
@@ -1204,19 +1823,21 @@ body.rtl-mode .footer-logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
     border-radius: 50%;
     border: 1px solid var(--color-border);
     color: var(--color-text-muted);
-    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
     text-decoration: none;
 }
 
 .social-links a:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-    background: rgba(var(--color-accent-rgb, 249, 115, 22), 0.08);
+    background: #ff7a00;
+    color: #fff;
+    border-color: #ff7a00;
+    transform: translateY(-4px);
 }
 
 /* ---- Link Columns ---- */
@@ -1325,13 +1946,8 @@ body.rtl-mode .footer-logo {
     gap: 20px;
 }
 
-.bottom-left,
-.bottom-right {
+.bottom-left {
     flex-shrink: 0;
-}
-
-.bottom-right {
-    text-align: right;
 }
 
 .bottom-center {
@@ -1339,7 +1955,7 @@ body.rtl-mode .footer-logo {
     align-items: center;
     gap: 6px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .bottom-center a {
@@ -1426,21 +2042,31 @@ body.rtl-mode .footer-logo {
         gap: var(--space-2);
     }
 
-    /* Footer: single column */
+    /* Footer: single column (inherits grid from ≤992px, refines to 1 col) */
     .footer-container {
         grid-template-columns: 1fr !important;
-        gap: 32px;
-        padding: 48px 20px;
-        text-align: center;
+        gap: 32px !important;
+        padding: 48px 20px !important;
+        text-align: center !important;
+    }
+
+    .footer-brand,
+    .footer-column,
+    .footer-newsletter {
+        align-items: center !important;
+        text-align: center !important;
     }
 
     .footer-newsletter {
-        order: -1;
-        max-width: 100%;
+        max-width: 100% !important;
     }
 
     .social-links {
-        justify-content: center;
+        justify-content: center !important;
+    }
+
+    .footer-logo {
+        justify-content: center !important;
     }
 
     .newsletter-form button {
@@ -1448,13 +2074,14 @@ body.rtl-mode .footer-logo {
     }
 
     .footer-bottom-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 12px !important;
+        align-items: center !important;
     }
 
-    .bottom-right {
-        text-align: center;
+    .bottom-center {
+        justify-content: center !important;
     }
 
     /* RTL footer override on mobile */
@@ -1875,11 +2502,7 @@ body:not(.light-mode).collaborate-page .bg-white {
 
 /* Media Kit Hero — unique visual identity */
 .media-hero {
-    background: linear-gradient(135deg,
-            #0f0f0f 0%,
-            #1a0a00 40%,
-            #2a1200 70%,
-            #0f0f0f 100%) !important;
+    background: radial-gradient(circle at center, #2d1200 0%, #1a0a00 60%, #0f0f0f 100%) !important;
     border-bottom: 1px solid rgba(249, 115, 22, 0.15);
     position: relative;
     overflow: hidden;
@@ -2438,5 +3061,42 @@ body:not(.light-mode).collaborate-page .bg-white {
     /* Marquee fix */
     .marquee-container {
         overflow: hidden !important;
+    }
+}
+
+/* =====================================
+   MEDIA KIT + CASE STUDY – CLEAN SPACING
+   ===================================== */
+
+/* 1️⃣ Normalize Section Padding */
+.media-kit-page section,
+.case-study-page section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* 2️⃣ Remove Extra Top/Bottom Margins from first/last children */
+.media-kit-page section > *:first-child,
+.case-study-page section > *:first-child {
+    margin-top: 0;
+}
+
+.media-kit-page section > *:last-child,
+.case-study-page section > *:last-child {
+    margin-bottom: 0;
+}
+
+/* 3️⃣ Remove Accidental Margin Between Sections */
+.media-kit-page section + section,
+.case-study-page section + section {
+    margin-top: 0;
+}
+
+/* 4️⃣ Reduce Mobile Spacing (Controlled) */
+@media (max-width: 768px) {
+    .media-kit-page section,
+    .case-study-page section {
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }

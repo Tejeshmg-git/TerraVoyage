@@ -153,6 +153,44 @@
             margin: 0 auto;
         }
 
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: var(--space-10);
+            align-items: start;
+        }
+
+        .contact-info-block {
+            background: var(--color-surface);
+            padding: var(--space-10);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+
+        .contact-info-item {
+            margin-bottom: var(--space-8);
+        }
+
+        .contact-info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-info-item h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-accent);
+            margin-bottom: var(--space-2);
+        }
+
+        .contact-info-item p {
+            font-size: 16px;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
         .form-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -212,6 +250,22 @@
                 text-align: center !important;
                 width: 100% !important;
             }
+
+            /* Contact Layout */
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+
+            .contact-info-block {
+                padding: var(--space-8);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-info-block {
+                padding: var(--space-6);
+            }
         }
 
         /* =====================
@@ -220,31 +274,32 @@
 
         /* Partner Cards — align icon+text to right */
         body.rtl-mode .partner-card {
-            direction: rtl;
             text-align: right;
+            direction: rtl;
         }
 
         /* Service Items — right-align */
         body.rtl-mode .service-item {
-            direction: rtl;
             text-align: right;
+            direction: rtl;
             border-left: none;
             border-right: 2px solid var(--color-accent);
         }
 
-        /* Featured Partnership — flip image vs text columns */
+        /* Featured Partnership — flip image vs text columns using direction */
         body.rtl-mode .collaborate-container>div[style*="grid"][style*="minmax(350px"] {
             direction: rtl;
         }
 
         body.rtl-mode .collaborate-container>div[style*="grid"][style*="minmax(350px"]>div:last-child {
             text-align: right;
+            direction: rtl;
         }
 
         /* Collaboration Process — right-align step text */
         body.rtl-mode .process-step {
-            direction: rtl;
             text-align: right;
+            direction: rtl;
         }
 
         body.rtl-mode .step-number {
@@ -253,54 +308,31 @@
         }
 
         /* Contact card — right-align labels and inputs */
-        body.rtl-mode .contact-card {
-            direction: rtl;
-        }
-
         body.rtl-mode .contact-card label,
         body.rtl-mode .contact-card input,
         body.rtl-mode .contact-card select,
         body.rtl-mode .contact-card textarea {
             text-align: right;
+            direction: rtl;
+        }
+
+        body.rtl-mode .contact-info-block {
+            text-align: right;
+            direction: rtl;
         }
 
         /* Keep centered headings and hero centered */
         body.rtl-mode .section-header.centered,
         body.rtl-mode [style*="text-align: center"] {
-            direction: ltr;
             text-align: center !important;
         }
 
         /* Hero NEVER changes in RTL */
         body.rtl-mode .collab-hero,
         body.rtl-mode .collab-hero-content {
-            direction: ltr !important;
             text-align: center !important;
-        }
-
-        /* Mobile: reset RTL */
-        @media (max-width: 768px) {
-
-            body.rtl-mode .partner-card,
-            body.rtl-mode .service-item,
-            body.rtl-mode .process-step,
-            body.rtl-mode .contact-card {
-                direction: ltr;
-                text-align: left;
-            }
-
-            body.rtl-mode .service-item {
-                border-left: 2px solid var(--color-accent);
-                border-right: none;
-            }
-
-            body.rtl-mode .collaborate-container>div[style*="grid"][style*="minmax(350px"] {
-                direction: ltr;
-            }
-
-            body.rtl-mode .collaborate-container>div[style*="grid"][style*="minmax(350px"]>div:last-child {
-                text-align: left;
-            }
+            direction: ltr;
+            /* Keeps hero perfectly intact */
         }
     </style>
 </head>
@@ -363,7 +395,7 @@
                         </svg>
                     </button>
                     <button class="rtl-toggle" id="rtl-toggle">LTR</button>
-                    <a href="login.html" class="login-link">Login</a>
+                    <a href="login.html" class="premium-cta header-cta">Become an Explorer</a>
                     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                         <span></span>
                         <span></span>
@@ -401,20 +433,18 @@
             <a href="stories.html">Stories</a>
             <a href="about.html">About</a>
             <a href="collaborate.html" class="active">Collaborate</a>
-            <a href="login.html">Login</a>
         </div>
-        <div class="mobile-actions" style="margin-top: auto;">
-            <button class="rtl-toggle" id="rtl-toggle-mobile" style="margin-bottom: var(--space-4);">LTR</button>
-            <a href="destinations.html" class="btn-primary" style="display: block; text-align: center;">Start
-                Exploring</a>
+        <div class="mobile-cta">
+            <a href="login.html" class="btn-primary full-width">
+                Become an Explorer
+            </a>
         </div>
     </div>
 
     <main>
         <!-- SECTION 1 — HERO -->
         <section class="collab-hero">
-            <img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=1920"
-                alt="Collaboration" class="collab-hero-bg">
+            <img src="../assets/images/home_v2-img/Rain-forest.jpg" alt="Collaboration" class="collab-hero-bg">
             <div class="collab-hero-content collaborate-container">
                 <span class="hero-label" style="margin-bottom: 20px;">Partnerships</span>
                 <h1
@@ -424,9 +454,11 @@
                     style="font-size: 20px; color: rgba(255,255,255,0.9); margin-bottom: 40px; max-width: 650px; margin-left: auto; margin-right: auto;">
                     We collaborate with brands, organizations, and cultural institutions to craft impactful documentary
                     experiences.</p>
-                <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-                    <a href="#contact" class="btn-primary" style="padding: 18px 42px;">Start a Collaboration</a>
-                    <a href="media-kit.html" class="btn-ghost"
+                <div class="hero-btns"
+                    style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                    <a href="#contact" class="btn-primary hero-cta" style="padding: 18px 42px;">Start a
+                        Collaboration</a>
+                    <a href="media-kit.html" class="btn-ghost hero-cta"
                         style="padding: 18px 42px; border-color: white; color: white;">View Media Kit</a>
                 </div>
             </div>
@@ -689,75 +721,121 @@
             </div>
         </section>
 
-        <!-- SECTION 8 — CONTACT FORM -->
+        <!-- SECTION 8 — CONTACT & COLLABORATION -->
         <section id="contact" style="padding: 90px 0;">
             <div class="collaborate-container">
-                <div class="contact-card">
-                    <div style="text-align: center; margin-bottom: var(--space-10);">
-                        <h2 style="font-family: var(--font-heading); font-size: 36px; margin-bottom: var(--space-4);">
-                            Start the Conversation</h2>
-                        <p style="color: var(--color-text-muted); font-size: 16px; max-width: 600px; margin: 0 auto;">
-                            Describe your vision below. We typically respond to partnership inquiries within 48 hours.
-                        </p>
+                <div class="contact-layout">
+                    <!-- LEFT SIDE: Contact Information -->
+                    <div class="contact-info-block">
+                        <h2 style="font-family: var(--font-heading); font-size: 32px; margin-bottom: var(--space-8);">
+                            Contact Information</h2>
+
+                        <div class="contact-info-item">
+                            <h4>Office Address</h4>
+                            <p>
+                                TerraVoyage Studios<br>
+                                123 Horizon Trail<br>
+                                Madurai, Tamil Nadu<br>
+                                India
+                            </p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>Phone & Email</h4>
+                            <p>
+                                <span style="display: block; margin-bottom: 4px;">+91 74694 94000</span>
+                                <span>hello@terravoyage.com</span>
+                            </p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>Working Hours</h4>
+                            <p>
+                                Mon – Fri: 9:00 AM – 6:00 PM
+                            </p>
+                        </div>
                     </div>
-                    <form>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label
-                                    style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Full
-                                    Name</label>
-                                <input type="text" placeholder="Your Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label
-                                    style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Company
-                                    / Organization</label>
-                                <input type="text" placeholder="Brand Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label
-                                    style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Work
-                                    Email</label>
-                                <input type="email" placeholder="email@company.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label
-                                    style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Project
-                                    Type</label>
-                                <select required>
-                                    <option value="" disabled selected>Select an option</option>
-                                    <option>Documentary Production</option>
-                                    <option>Sponsored Expedition</option>
-                                    <option>Branded Narrative</option>
-                                    <option>Cultural Campaign</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label
-                                    style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Budget
-                                    Range</label>
-                                <select required>
-                                    <option value="" disabled selected>Select an option</option>
-                                    <option>Under $25k</option>
-                                    <option>$25k - $50k</option>
-                                    <option>$50k - $100k</option>
-                                    <option>$100k+</option>
-                                </select>
-                            </div>
-                            <div class="form-group full-width">
-                                <label
-                                    style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Message
-                                    / Project Brief</label>
-                                <textarea rows="6" placeholder="Tell us more about your collaboration goals..."
-                                    required></textarea>
-                            </div>
+
+                    <!-- RIGHT SIDE: Contact Form -->
+                    <div class="contact-card" style="margin: 0; max-width: none;">
+                        <div style="margin-bottom: var(--space-8);">
+                            <h2
+                                style="font-family: var(--font-heading); font-size: 32px; margin-bottom: var(--space-4);">
+                                Start the Conversation</h2>
+                            <p style="color: var(--color-text-muted); font-size: 16px; margin: 0;">
+                                Describe your vision below. We typically respond within 48 hours.
+                            </p>
                         </div>
-                        <div style="margin-top: var(--space-8); text-align: center;">
-                            <button type="submit" class="btn-primary"
-                                style="padding: 18px 60px; font-weight: 700; width: 100%;">Submit Proposal</button>
-                        </div>
-                    </form>
+                        <form>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label
+                                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Full
+                                        Name</label>
+                                    <input type="text" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label
+                                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Company
+                                        / Organization</label>
+                                    <input type="text" placeholder="Brand Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label
+                                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Work
+                                        Email</label>
+                                    <input type="email" placeholder="email@company.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label
+                                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Project
+                                        Type</label>
+                                    <select required>
+                                        <option value="" disabled selected>Select an option</option>
+                                        <option>Documentary Production</option>
+                                        <option>Sponsored Expedition</option>
+                                        <option>Branded Narrative</option>
+                                        <option>Cultural Campaign</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label
+                                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Budget
+                                        Range</label>
+                                    <select required>
+                                        <option value="" disabled selected>Select an option</option>
+                                        <option>Under $25k</option>
+                                        <option>$25k - $50k</option>
+                                        <option>$50k - $100k</option>
+                                        <option>$100k+</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label
+                                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">Message
+                                        / Project Brief</label>
+                                    <textarea rows="6" placeholder="Tell us more about your collaboration goals..."
+                                        required></textarea>
+                                </div>
+                            </div>
+                            <div style="margin-top: var(--space-8); text-align: center;">
+                                <button type="submit" class="btn-primary"
+                                    style="padding: 18px 60px; font-weight: 700; width: 100%;">Submit Proposal</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9 — MAP -->
+        <section style="padding: 0 0 90px 0;">
+            <div class="collaborate-container">
+                <div
+                    style="width: 100%; height: 450px; border-radius: var(--border-radius); overflow: hidden; border: 1px solid var(--color-border); background: var(--color-surface-alt);">
+                    <img src="../assets/images/collaborate/Map-img.png" alt="TerraVoyage Location Map"
+                        style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </div>
         </section>
@@ -772,8 +850,8 @@
                     <img src="../assets/icons/logo.svg" alt="TerraVoyage Logo">
                     TerraVoyage
                 </a>
-                <p>TerraVoyage is a documentary-driven travel platform dedicated to exploring remote cultures, untold
-                    histories, and human stories shaped by landscape.</p>
+                <p>TerraVoyage captures cinematic journeys across mountains, oceans, cultures, and hidden paths —
+                    telling powerful human stories shaped by landscape, adventure, and discovery.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -840,7 +918,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <div class="bottom-left">
-                    <span>&copy; 2024 TerraVoyage. All rights reserved.</span>
+                    <span>&copy; <span id="year"></span> TerraVoyage. All rights reserved.</span>
                 </div>
                 <div class="bottom-center">
                     <a href="#">Privacy Policy</a>
@@ -849,14 +927,12 @@
                     <span class="separator">|</span>
                     <a href="#">Cookie Policy</a>
                 </div>
-                <div class="bottom-right">
-                    <span>Designed for Cinematic Excellence.</span>
-                </div>
             </div>
         </div>
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

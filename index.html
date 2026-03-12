@@ -38,15 +38,13 @@
             border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
         }
 
-        [data-theme="light"] .hero-content h1,
-        [data-theme="light"] .hero-content p {
-            color: #000 !important;
+        [data-theme="light"] .trust-logo {
+            opacity: 0.4;
+            filter: grayscale(1) invert(1);
+            transition: 0.3s;
         }
 
-        [data-theme="light"] .hero-content .btn-ghost {
-            border-color: rgba(0, 0, 0, 0.4) !important;
-            color: #000 !important;
-        }
+
 
         [data-theme="light"] .trust-logo {
             opacity: 0.4;
@@ -62,14 +60,196 @@
             transform: scale(1.05);
         }
 
-        .trust-logo {
-            opacity: 0.2;
-            filter: grayscale(1);
-            transition: 0.3s;
-        }
+
 
         .trust-logo:hover {
             opacity: 0.8;
+        }
+
+        .how-we-work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--grid-gap);
+            margin-top: var(--space-10);
+            max-width: var(--container-max-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .work-step {
+            text-align: center;
+            padding: 0 var(--space-2);
+        }
+
+        .card-img img {
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        /* Standardized Background Patterns */
+        .bg-primary {
+            background-color: #ffffff !important;
+        }
+
+        .bg-alternate {
+            background-color: #f8f9fa !important;
+        }
+
+        /* Ensure dark mode still works with unified IDs if needed, 
+           but enforcing hex codes as requested for the minimal feel */
+        [data-theme="dark"] .bg-primary {
+            background-color: var(--color-surface) !important;
+        }
+
+        [data-theme="dark"] .bg-alternate {
+            background-color: var(--color-bg) !important;
+        }
+
+        /* Editorial Cinematic Block Section-2 */
+        .editorial-section {
+            position: relative;
+            padding: 70px var(--space-3);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            min-height: auto;
+        }
+
+        .editorial-wrapper {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
+            width: 100%;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .editorial-side-img {
+            width: 100%;
+            max-height: 420px;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .editorial-side-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .editorial-glass-card {
+            background: #ffffff;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            padding: 35px 40px;
+            max-width: 680px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            animation: fadeInGlass 1s ease-out;
+        }
+
+        @keyframes fadeInGlass {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .editorial-line {
+            width: 3px;
+            height: 50px;
+            background: var(--color-accent);
+            margin-bottom: var(--space-6);
+        }
+
+        .editorial-glass-card h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-3);
+            color: #111111 !important;
+        }
+
+        .editorial-glass-card p {
+            font-size: 19px;
+            line-height: 1.8;
+            max-width: 600px;
+            color: #555555 !important;
+            font-weight: 400;
+        }
+
+        @media (max-width: 1024px) {
+            .editorial-section {
+                padding: 60px var(--space-3);
+                justify-content: center;
+            }
+
+            .editorial-wrapper {
+                grid-template-columns: 1fr;
+                gap: var(--space-10);
+            }
+
+            .editorial-glass-card {
+                text-align: left;
+                margin: 0;
+                max-width: 100%;
+            }
+
+            .editorial-glass-card h2 {
+                font-size: 40px !important;
+            }
+
+            .editorial-side-img {
+                max-height: 400px;
+                order: 2;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .editorial-section {
+                padding: 50px var(--space-3);
+            }
+
+            .editorial-glass-card {
+                padding: var(--space-6);
+            }
+
+            .editorial-glass-card h2 {
+                font-size: 32px !important;
+            }
+
+            .editorial-side-img {
+                max-height: 350px;
+            }
         }
 
         @media (max-width: 767px) {
@@ -142,7 +322,7 @@
                         </svg>
                     </button>
                     <button class="rtl-toggle" id="rtl-toggle">LTR</button>
-                    <a href="pages/login.html" class="login-link">Login</a>
+                    <a href="pages/login.html" class="premium-cta header-cta">Become an Explorer</a>
                     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                         <span></span>
                         <span></span>
@@ -180,46 +360,36 @@
             <a href="pages/stories.html">Stories</a>
             <a href="pages/about.html">About</a>
             <a href="pages/collaborate.html">Collaborate</a>
-            <a href="pages/login.html">Login</a>
         </div>
-        <div class="mobile-actions" style="margin-top: auto;">
-            <button class="rtl-toggle" id="rtl-toggle-mobile" style="margin-bottom: var(--space-4);">LTR</button>
-            <a href="pages/destinations.html" class="btn-primary" style="display: block; text-align: center;">Start
-                Exploring</a>
+        <div class="mobile-cta">
+            <a href="pages/login.html" class="btn-primary full-width">
+                Become an Explorer
+            </a>
         </div>
     </div>
 
     <main>
         <!-- SECTION 1 — HERO -->
-        <section class="hero"
-            style="position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: var(--color-bg);">
-            <div class="hero-content"
-                style="position: relative; z-index: 3; max-width: 900px; padding: 0 var(--space-4);">
-                <h1
-                    style="font-size: clamp(42px, 7vw, 68px); font-weight: 800; letter-spacing: -1px; margin-bottom: var(--space-4); line-height: 1.1;">
-                    The World Is Not a Destination.<br>It’s a Narrative.</h1>
-                <p
-                    style="font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,0.9); margin-bottom: var(--space-8); line-height: 1.7; max-width: 750px; margin-left: auto; margin-right: auto;">
-                    We craft documentary-driven journeys that reveal the soul of every landscape — and the voices that
+        <section class="hero-section home-hero">
+            <div class="hero-content">
+                <h1>The World Is Not a Destination.<br>It’s a Narrative.</h1>
+                <p>We craft documentary-driven journeys that reveal the soul of every landscape — and the voices that
                     give it meaning.</p>
                 <div class="hero-btns"
                     style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-                    <a href="pages/destinations.html" class="btn-primary"
+                    <a href="pages/destinations.html" class="btn-primary hero-cta"
                         style="padding: 18px 42px; font-size: 16px; min-width: 220px;">Explore Destinations</a>
-                    <a href="pages/about.html" class="btn-ghost"
+                    <a href="pages/about.html" class="btn-ghost hero-cta"
                         style="padding: 18px 42px; font-size: 16px; min-width: 220px;">Watch Our Story</a>
                 </div>
             </div>
-            <div class="hero-overlay"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.65)); z-index: 2;">
-            </div>
-            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=1920"
-                alt="Cinematic landscape" class="hero-bg"
+            <img src="assets/images/Home-imgs/pexels-joyston-judah-331625-933054.jpg" alt="Cinematic landscape"
+                class="hero-bg"
                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
         </section>
 
         <!-- SECTION 1.5 — FEATURED STORY -->
-        <section class="section-container" style="padding: 100px var(--space-3);">
+        <section class="section-container bg-primary" style="padding: 100px var(--space-3);">
             <div class="grid-two-col" style="gap: var(--space-12); align-items: center;">
                 <div class="feature-story-img"
                     style="overflow: hidden; border-radius: var(--border-radius); border: 1px solid var(--color-border);">
@@ -242,67 +412,72 @@
         </section>
 
         <!-- SECTION 2 — BRAND INTRO -->
-        <section class="section-container" style="text-align: center; max-width: 700px; padding: 100px var(--space-3);">
-            <div class="section-header centered">
-                <h2 style="font-size: 36px; margin-bottom: var(--space-4);">Travel, Redefined.</h2>
+        <section class="editorial-section bg-alternate">
+            <div class="editorial-wrapper">
+                <!-- Left: Content Card -->
+                <div class="editorial-glass-card">
+                    <div class="editorial-line"></div>
+                    <h2>Travel, Redefined.</h2>
+                    <p>At TerraVoyage, we move beyond tourism. We travel slowly, listen deeply, and document the human
+                        stories hidden between landscapes.</p>
+                </div>
+                <!-- Right: Cinematic Side Image -->
+                <div class="editorial-side-img">
+                    <img src="assets/images/Home-imgs/Cinematic Journey Narrative.jpg"
+                        alt="Cinematic Journey Narrative">
+                </div>
             </div>
-            <p style="font-size: 18px; color: var(--color-text-muted); line-height: 1.8;">At TerraVoyage, we move beyond
-                tourism. We travel slowly, listen deeply, and document the human stories hidden between landscapes.</p>
         </section>
 
         <!-- SECTION 3 — CORE PILLARS -->
-        <section class="section-container bg-surface-alt" style="padding: 100px var(--space-3);">
+        <section class="section-container bg-primary" style="padding: 100px var(--space-3);">
             <div class="section-header centered">
                 <h2 style="margin-bottom: var(--space-8);">Our Philosophy</h2>
             </div>
             <div class="philosophy-grid">
                 <div class="card"
-                    style="padding: var(--space-6); background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div class="icon-box" style="margin-bottom: var(--space-4); color: var(--color-accent);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                            <path d="M2 12h20" />
-                        </svg>
+                    style="padding: 0; background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; text-align: center; border-radius: var(--border-radius); overflow: hidden;">
+                    <div class="card-img" style="width: 100%; aspect-ratio: 16/10; overflow: hidden;">
+                        <img src="assets/images/Home-imgs/Authentic Exploration.jpg" alt="Authentic Exploration"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Authentic Exploration</h3>
-                    <p style="font-size: 14px; color: var(--color-text-muted);">Going beyond the map to discover the
-                        stories that haven't been told yet.</p>
+                    <div style="padding: var(--space-6);">
+                        <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Authentic Exploration</h3>
+                        <p style="font-size: 14px; color: var(--color-text-muted);">Going beyond the map to discover the
+                            stories that haven't been told yet.</p>
+                    </div>
                 </div>
                 <div class="card"
-                    style="padding: var(--space-6); background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div class="icon-box" style="margin-bottom: var(--space-4); color: var(--color-accent);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 6.1H3" />
-                            <path d="M21 12.1H3" />
-                            <path d="M15 18.1H3" />
-                        </svg>
+                    style="padding: 0; background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; text-align: center; border-radius: var(--border-radius); overflow: hidden;">
+                    <div class="card-img" style="width: 100%; aspect-ratio: 16/10; overflow: hidden;">
+                        <img src="assets/images/Home-imgs/Cultural Depth.jpg" alt="Cultural Depth"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Cultural Depth</h3>
-                    <p style="font-size: 14px; color: var(--color-text-muted);">A deep respect for local wisdom and the
-                        preservation of ancestral traditions.</p>
+                    <div style="padding: var(--space-6);">
+                        <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Cultural Depth</h3>
+                        <p style="font-size: 14px; color: var(--color-text-muted);">A deep respect for local wisdom and
+                            the
+                            preservation of ancestral traditions.</p>
+                    </div>
                 </div>
                 <div class="card"
-                    style="padding: var(--space-6); background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div class="icon-box" style="margin-bottom: var(--space-4); color: var(--color-accent);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2z" />
-                            <circle cx="12" cy="12" r="3" />
-                        </svg>
+                    style="padding: 0; background: var(--color-surface); border: 1px solid var(--color-border); height: 100%; display: flex; flex-direction: column; text-align: center; border-radius: var(--border-radius); overflow: hidden;">
+                    <div class="card-img" style="width: 100%; aspect-ratio: 16/10; overflow: hidden;">
+                        <img src="assets/images/Home-imgs/Visual Storytelling.jpg" alt="Visual Storytelling"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Visual Storytelling</h3>
-                    <p style="font-size: 14px; color: var(--color-text-muted);">Cinema-grade documentation that captures
-                        the emotional resonance of every mile.</p>
+                    <div style="padding: var(--space-6);">
+                        <h3 style="margin-bottom: var(--space-2); font-size: 20px;">Visual Storytelling</h3>
+                        <p style="font-size: 14px; color: var(--color-text-muted);">Cinema-grade documentation that
+                            captures
+                            the emotional resonance of every mile.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 3.5 — HOW WE WORK -->
-        <section class="section-container" style="padding: 80px var(--space-3); text-align: center;">
+        <section class="section-container bg-alternate" style="padding: 80px var(--space-3); text-align: center;">
             <div class="section-header centered">
                 <h2 style="margin-bottom: var(--space-8);">How We Work</h2>
             </div>
@@ -335,13 +510,13 @@
         </section>
 
         <!-- SECTION 4 — FEATURED DESTINATIONS -->
-        <section class="section-container" style="padding: 80px var(--space-3);">
+        <section class="section-container bg-primary" style="padding: 80px var(--space-3);">
             <div class="section-header">
                 <h2>Featured Journeys</h2>
             </div>
             <div class="destination-grid">
                 <div class="card" style="position: relative; overflow: hidden; border-radius: var(--border-radius);">
-                    <img src="assets/images/Adventures/patagonia.jpg" alt="Patagonia"
+                    <img src="assets/images/Adventures/Patagonia.jpg" alt="Patagonia"
                         style="width: 100%; height: 400px; object-fit: cover; object-position: center; transition: transform 0.5s ease;">
                     <div
                         style="position: absolute; bottom: 0; left: 0; width: 100%; padding: var(--space-4); background: linear-gradient(transparent, rgba(0,0,0,0.8));">
@@ -352,7 +527,7 @@
                     </div>
                 </div>
                 <div class="card" style="position: relative; overflow: hidden; border-radius: var(--border-radius);">
-                    <img src="assets/images/Adventures/ladakh.jpg" alt="Ladakh"
+                    <img src="assets/images/Home-imgs/Ladakh, India.jpg" alt="Ladakh"
                         style="width: 100%; height: 400px; object-fit: cover; object-position: center; transition: transform 0.5s ease;">
                     <div
                         style="position: absolute; bottom: 0; left: 0; width: 100%; padding: var(--space-4); background: linear-gradient(transparent, rgba(0,0,0,0.8));">
@@ -362,7 +537,7 @@
                     </div>
                 </div>
                 <div class="card" style="position: relative; overflow: hidden; border-radius: var(--border-radius);">
-                    <img src="assets/images/Adventures/vik,iceland.jpg" alt="Iceland"
+                    <img src="assets/images/Home-imgs/Vik, Iceland.jpg" alt="Iceland"
                         style="width: 100%; height: 400px; object-fit: cover; object-position: center; transition: transform 0.5s ease;">
                     <div
                         style="position: absolute; bottom: 0; left: 0; width: 100%; padding: var(--space-4); background: linear-gradient(transparent, rgba(0,0,0,0.8));">
@@ -374,15 +549,14 @@
         </section>
 
         <!-- SECTION 5 — STORYTELLERS PREVIEW -->
-        <section class="section-container bg-surface-alt" style="padding: 100px var(--space-3); text-align: center;">
+        <section class="section-container bg-alternate" style="padding: 100px var(--space-3); text-align: center;">
             <div class="section-header centered">
                 <h2>Meet the Storytellers</h2>
             </div>
             <div class="storyteller-grid" style="margin-top: var(--space-8);">
                 <div class="storyteller-item" style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=300"
-                        alt="Elias Vance"
-                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
+                    <img src="assets/images/Home-imgs/Elias Vance.jpg" alt="Elias Vance"
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; object-position: top; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
                     <h3 style="font-size: 20px; margin-bottom: 4px;">Elias Vance</h3>
                     <p
                         style="color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: var(--space-2);">
@@ -392,9 +566,8 @@
                         documenting the world's remote edges.</p>
                 </div>
                 <div class="storyteller-item" style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300"
-                        alt="Julian Moretti"
-                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
+                    <img src="assets/images/Home-imgs/Julian Moretti.jpg" alt="Julian Moretti"
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; object-position: top; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
                     <h3 style="font-size: 20px; margin-bottom: 4px;">Julian Moretti</h3>
                     <p
                         style="color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: var(--space-2);">
@@ -404,9 +577,8 @@
                         extreme environments.</p>
                 </div>
                 <div class="storyteller-item" style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300"
-                        alt="Sofia Romano"
-                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
+                    <img src="assets/images/Home-imgs/Sofia Romano.jpg" alt="Sofia Romano"
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; object-position: top; margin-bottom: var(--space-4); border: 2px solid var(--color-accent);">
                     <h3 style="font-size: 20px; margin-bottom: 4px;">Sofia Romano</h3>
                     <p
                         style="color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: var(--space-2);">
@@ -419,7 +591,7 @@
         </section>
 
         <!-- SECTION 6 — IMPACT METRICS -->
-        <section class="metrics-band">
+        <section class="metrics-band bg-primary">
             <div class="metrics-container">
                 <div style="text-align: center;">
                     <div style="font-size: 48px; font-weight: 800; color: var(--color-accent);">50+</div>
@@ -443,14 +615,14 @@
         </section>
 
         <!-- SECTION 6.5 — TESTIMONIAL -->
-        <section class="section-container" style="padding: 100px var(--space-3); text-align: center;">
+        <section class="section-container bg-alternate" style="padding: 80px var(--space-3); text-align: center;">
             <div
-                style="max-width: 900px; margin: 0 auto; padding: var(--space-12) var(--space-6); background: var(--color-surface-alt); border-radius: 20px; border: 1px solid var(--color-border);">
+                style="max-width: 800px; margin: 0 auto; padding: 60px 80px; background: var(--color-surface-alt); border-radius: 20px; border: 1px solid var(--color-border);">
                 <div
-                    style="color: var(--color-accent); font-size: 48px; margin-bottom: var(--space-4); font-family: var(--font-heading);">
+                    style="color: var(--color-accent); font-size: 30px; margin-bottom: 20px; font-family: var(--font-heading);">
                     “</div>
                 <p
-                    style="font-size: clamp(20px, 4vw, 32px); font-family: var(--font-heading); font-style: italic; line-height: 1.5; margin-bottom: var(--space-8); max-width: 700px; margin-left: auto; margin-right: auto;">
+                    style="font-size: 28px; font-family: var(--font-heading); font-style: italic; line-height: 1.4; margin-bottom: var(--space-8); max-width: 700px; margin-left: auto; margin-right: auto;">
                     TerraVoyage doesn’t just document places — they document humanity.</p>
                 <p
                     style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--color-text-muted);">
@@ -459,7 +631,7 @@
         </section>
 
         <!-- SECTION 7 — FINAL CTA -->
-        <section class="cta-section">
+        <section class="cta-section bg-primary">
             <div class="cta-internal-container">
                 <h2 style="font-size: clamp(32px, 5vw, 48px); margin-bottom: var(--space-4); line-height: 1.2;">Let’s
                     Tell Stories That Matter.</h2>
@@ -482,8 +654,8 @@
                     <img src="assets/icons/logo.svg" alt="TerraVoyage Logo">
                     TerraVoyage
                 </a>
-                <p>TerraVoyage is a documentary-driven travel platform dedicated to exploring remote cultures, untold
-                    histories, and human stories shaped by landscape.</p>
+                <p>TerraVoyage captures cinematic journeys across mountains, oceans, cultures, and hidden paths —
+                    telling powerful human stories shaped by landscape, adventure, and discovery.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -549,7 +721,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <div class="bottom-left">
-                    <span>&copy; 2024 TerraVoyage. All rights reserved.</span>
+                    <span>&copy; <span id="year"></span> TerraVoyage. All rights reserved.</span>
                 </div>
                 <div class="bottom-center">
                     <a href="#">Privacy Policy</a>
@@ -558,14 +730,12 @@
                     <span class="separator">|</span>
                     <a href="#">Cookie Policy</a>
                 </div>
-                <div class="bottom-right">
-                    <span>Designed for Cinematic Excellence.</span>
-                </div>
             </div>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 
 </html>
